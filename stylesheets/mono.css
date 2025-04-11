@@ -84,7 +84,7 @@ body {
 
 .contrast-controls {
   position: fixed;
-  bottom: 10px;
+  bottom: 50px; /* Position above footer */
   left: 10px;
   z-index: 100;
   opacity: 0.4;
@@ -139,8 +139,7 @@ body {
   flex-direction: column;
   gap: 2rem;
   flex: 1;
-  margin-bottom: 2rem;
-  /* Spacing above footer */
+  padding-bottom: 2rem; /* Padding instead of margin to account for sticky footer */
 }
 
 @media (min-width: 768px) {
@@ -272,11 +271,16 @@ footer {
   margin-top: auto;
   /* Push to bottom */
   padding-top: 1.5rem;
+  padding-bottom: 1rem;
   font-size: 0.875rem;
   color: var(--color-text-muted);
   border-top: 1px solid var(--color-border);
   width: 100%; /* Ensure footer takes full width */
-  position: relative; /* Ensure footer stays in flow */
+  position: sticky; /* Stick footer to bottom */
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 5;
 }
 
 .footer-content {
