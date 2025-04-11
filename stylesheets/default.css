@@ -6,65 +6,14 @@
   --color-blue: #52A7DC;
   --color-green: #A4C88E;
 
-  /* Tints */
-  --color-pink-300: #E89BBC;
-  --color-pink-100: #F5C9DB;
-  --color-yellow-300: #FBE96C;
-  --color-yellow-100: #FCF4A8;
-  --color-blue-300: #79BAE5;
-  --color-blue-100: #A7D3F0;
-  --color-green-300: #BFD8AD;
-  --color-green-100: #DCEACF;
-
-  /* Neutrals */
-  --color-cream: #F9F5F0;
-  /* Soft cream background */
-  --color-bg-muted: #E1E1E1;
-  --color-line: #333333;
-
-  /* Semantic Colors */
-  --color-primary: var(--color-blue);
-  --color-secondary: var(--color-pink);
-  --color-accent: var(--color-yellow);
-  --color-success: var(--color-green);
-  --color-text: var(--color-line);
-  --color-text-light: var(--color-line);
-  --color-text-muted: #999999;
-  --color-border: var(--color-bg-muted);
-  --color-background: var(--color-cream);
-
   /* Typography */
   --font-sans: 'Funnel Display', sans-serif;
   --font-serif: 'Libre Baskerville', serif;
-  --line-height-normal: 1.5;
-  --line-height-tight: 1.3;
-  --line-height-loose: 1.8;
-
-  /* Mission Text Specific */
-  --mission-line-height: 1.8; /* Reduced line height for mobile to prevent overflow */
-  --mission-line-height-desktop: var(--line-height-tight);
-
+  
   /* Timing Variables */
   --pace-calm-human-breathing: 4.5s;
   --transition-speed: var(--pace-calm-human-breathing);
   --gradient-rotation-speed: calc(var(--pace-calm-human-breathing) * 3);
-
-  /* Golden Ratio */
-  --golden-ratio: 1.618;
-}
-
-/* Special classes for better contrast with certain color combinations */
-.yellow-secondary .bad-answer {
-  color: #D4B800 !important;
-  /* Darker yellow for better contrast */
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5) !important;
-}
-
-/* Focus styles for better accessibility */
-a:focus,
-button:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
 }
 
 * {
@@ -86,125 +35,59 @@ button:focus {
   border-width: 0;
 }
 
-html,
-body {
+html, body {
   height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-text);
+  color: #333;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1rem;
-  background-color: var(--color-cream);
-  /* Fallback */
+  position: relative;
   transition: background-image var(--transition-speed) ease-in-out;
-  overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.animation-controls,
-.contrast-controls {
-  position: fixed;
-  bottom: 50px; /* Position above footer */
-  z-index: 100;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.animation-controls {
-  right: 10px;
-}
-
-.contrast-controls {
-  left: 10px;
-}
-
-.animation-controls:hover,
-.contrast-controls:hover {
-  opacity: 1;
-}
-
-#toggle-animations,
-.contrast-button {
-  padding: 5px 8px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border: none;
-  border-radius: 20px;
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-block;
-  text-decoration: none;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
-}
-
-#toggle-animations:hover,
-.contrast-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  transform: scale(1.05);
-}
-
-main {
-  width: 100%;
-  max-width: 1600px;
+/* Simple page layout */
+.page {
   display: flex;
   flex-direction: column;
-  min-height: 85vh;
-  margin: 0 auto; /* Center horizontally */
+  height: 100vh;
+  width: 100%;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.9); /* 90% opacity white */
-  backdrop-filter: blur(5px);
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem; /* Add space at bottom for better visibility */
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  overflow-y: visible; /* Allow vertical overflow/scrolling */
-  gap: 2rem; /* Space between elements */
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
-  body {
-    padding: 2rem;
-  }
-
-  main {
-    display: grid;
-    grid-template-columns: 61.8% 38.2%;
-    /* Golden ratio split */
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "logo intro"
-      "mission mission";
-    gap: 2rem 3rem;
+  .content {
+    flex-direction: row;
+    align-items: center;
   }
 }
 
-/* Left column with larger logo */
-.left-column {
-  grid-area: logo;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.logo-container {
+/* Logo section */
+.logo-section {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: 500px;
 }
 
+/* Logo SVG */
 .logo-container svg {
   width: 100%;
-  /* Full width of its container */
   height: auto;
 }
 
@@ -215,110 +98,88 @@ main {
   transition: fill var(--transition-speed) ease-in-out;
 }
 
-/* Mission section - below logo */
-#mission {
-  grid-area: mission;
-  margin-top: 1rem;
-  width: 100%; /* Full width to contain extra-large text */
-  text-align: left;
-  padding-left: 0;
-  margin-left: 0;
-  align-self: start;
-  margin-bottom: 6rem; /* Increased bottom margin to ensure footer visibility */
+/* Text section */
+.text-section {
+  flex: 1;
 }
 
-#mission h3 {
-  font-family: var(--font-serif);
-  font-size: 3rem; /* 3x larger */
-  line-height: var(--mission-line-height); /* Using variable for easy adjustment */
-  font-style: italic;
-  font-weight: normal;
-  margin-bottom: 0.5em; /* Reduced to avoid excessive spacing */
-  max-width: 100%; /* Allow text to use full width */
-  color: #555; /* Less intense color */
-  word-wrap: break-word; /* Ensure text wraps properly */
-}
-
-/* Introduction section - vertically centered against logo */
-.right-column {
-  grid-area: intro;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 0;
-  height: 100%;
-}
-
+/* Introduction section */
 #introduction {
-  width: 100%;
+  margin-bottom: 3rem;
 }
 
-/* Improved typographic contrast */
 #introduction h2 {
-  font-family: var(--font-sans);
-  font-weight: 500; /* Lightened from 700 */
-  font-size: 1.15rem;
-  line-height: var(--line-height-tight);
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.3;
   margin: 0;
   white-space: nowrap;
-  letter-spacing: 0.03em; /* Looser kerning/tracking (positive value) */
-  text-transform: none;
+  letter-spacing: 0.03em;
 }
 
 #introduction h2.question {
-  color: var(--color-text-muted);
+  color: #999;
   margin-bottom: 0.15rem;
 }
 
 #introduction h2.good-answer {
-  color: var(--color-primary);
-  margin-bottom: 4rem; /* Much more space between Q/A pairs */
+  color: var(--color-blue);
+  margin-bottom: 2.5rem;
   transition: color var(--transition-speed) ease-in-out;
-  letter-spacing: 0.02em; /* Looser kerning to match */
-  font-weight: 700; /* Reduced from 800 but still bold */
+  letter-spacing: 0.02em;
+  font-weight: 700;
 }
 
 #introduction h2.bad-answer {
-  color: var(--color-secondary);
-  margin-bottom: 4rem; /* Much more space between Q/A pairs */
+  color: var(--color-pink);
+  margin-bottom: 2.5rem;
   transition: color var(--transition-speed) ease-in-out;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for readability */
-  letter-spacing: 0.02em; /* Looser kerning to match */
-  font-weight: 700; /* Reduced from 800 but still bold */
+  letter-spacing: 0.02em;
+  font-weight: 700;
 }
 
-/* Footer with social links and hairline separator */
+#introduction h2:last-child {
+  margin-bottom: 0;
+}
+
+/* Special class for yellow contrast */
+.yellow-secondary .bad-answer {
+  color: #D4B800 !important;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Mission statement */
+#mission {
+  width: 100%;
+}
+
+#mission h3 {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  line-height: 1.8;
+  font-style: italic;
+  font-weight: normal;
+  color: #555;
+}
+
+/* Footer */
 footer {
-  margin-top: auto; /* Push to bottom */
-  padding: 1.5rem 0 1rem 0;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  border-top: 1px solid var(--color-border);
-  width: 100vw; /* Full viewport width */
-  position: sticky; /* Stick footer to bottom */
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(5px);
-  z-index: 5;
-  margin-left: calc(-50vw + 50%); /* Trick to make it full width regardless of container */
+  width: 100%;
+  padding: 1.5rem 0;
+  margin-top: auto;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1600px;
   width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .copyright {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 300;
-  letter-spacing: 0.03em;
+  color: #777;
 }
 
 .social-links {
@@ -327,110 +188,79 @@ footer {
 }
 
 .social-icon {
-  color: var(--color-text-muted);
-  transition: color var(--transition-speed) ease-in-out;
-  font-size: 1.5rem;
+  color: #777;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-  color: var(--color-secondary);
-}
-
-.fa-github,
-.fa-square {
-  display: inline-block !important;
-  font-size: 1.5rem;
+  color: #333;
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-blue);
   text-decoration: none;
-  transition: color var(--transition-speed) ease-in-out;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--color-secondary);
+  color: var(--color-pink);
 }
 
-/* Baseline alignment fix */
-@media (min-width: 768px) {
-
-  /* Create a baseline grid */
-  body {
-    --baseline: 1.8rem;
-    line-height: var(--baseline);
-  }
-
-  #introduction h2 {
-    font-size: 1.4rem;
-    /* Align to baseline grid */
-    line-height: calc(var(--baseline) * 1);
-    margin-bottom: 0;
-  }
-
-  #introduction h2.question {
-    margin-top: calc(var(--baseline) * 0.7);
-  }
-
-  #introduction h2.bad-answer,
-  #introduction h2.good-answer {
-    margin-bottom: calc(var(--baseline) * 0.7);
-  }
-
-  #mission h3 {
-    font-size: 3.5rem;
-    /* Even larger on desktop */
-    /* Align to baseline grid */
-    line-height: var(--mission-line-height-desktop);
-    /* Using desktop variable for easy adjustment */
-    margin-bottom: calc(var(--baseline) * 1);
-  }
-
-  .social-icon {
-    font-size: 1.75rem;
-  }
-
-  .fa-github,
-  .fa-square {
-    font-size: 1.75rem;
-  }
+/* Control buttons */
+.controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 
+.controls:hover {
+  opacity: 1;
+}
+
+.controls button,
+.controls a {
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.controls button:hover,
+.controls a:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+/* Responsive sizing */
 @media (min-width: 992px) {
   #introduction h2 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
-
+  
   #mission h3 {
-    font-size: 3.75rem;
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 1200px) {
-  .container {
-    padding: 3rem;
-  }
-
   #introduction h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
-
+  
   #mission h3 {
-    font-size: 4rem;
-  }
-}
-
-/* For larger displays, make everything bigger proportionally */
-@media (min-width: 1600px) {
-  .container {
-    max-width: 1800px;
-  }
-
-  #introduction h2 {
-    font-size: 2.2rem;
-  }
-
-  #mission h3 {
-    font-size: 4.25rem;
+    font-size: 2.5rem;
   }
 }

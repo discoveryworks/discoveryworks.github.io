@@ -91,9 +91,10 @@
     <!-- Accessibility announcement for color changes -->
     <div aria-live="polite" class="sr-only" id="color-change-announcement"></div>
     
-    <main role="main">
-      <div class="left-column">
-        <div class="logo-container">
+    <div class="page">
+      <div class="content">
+        <div class="logo-section">
+          <div class="logo-container">
             <svg
               id="logo"
               width="100%"
@@ -133,7 +134,7 @@
           </div>
         </div>
 
-        <div class="right-column">
+        <div class="text-section">
           <div id="introduction">
             <h2 class="question" id="q1">"If you build it, they will come"?</h2>
             <h2 class="bad-answer" id="a1" aria-labelledby="q1 a1">Doesn't work.</h2>
@@ -144,15 +145,20 @@
             <h2 class="question" id="q3">Discovery?</h2>
             <h2 class="good-answer" id="a3" aria-labelledby="q3 a3">Works.</h2>
           </div>
+          
+          <div id="mission">
+            <h3>
+              Discovery Works <br />is a product development studio
+              <br />exploring how humans and computers interact.
+            </h3>
+          </div>
         </div>
-        
-        <div id="mission">
-          <h3>
-            Discovery Works <br />is a product development studio
-            <br />exploring how humans and computers interact.
-          </h3>
-        </div>
-    </main>
+      </div>
+    </div>
+
+    <div class="controls">
+      <a href="/" class="contrast-button">Color</a>
+    </div>
 
     <footer role="contentinfo">
       <div class="footer-content">
@@ -177,10 +183,6 @@
         </div>
       </div>
     </footer>
-
-    <div class="contrast-controls">
-      <a href="/" class="contrast-button">Color</a>
-    </div>
     
     <script>
       // List of all available patterns

@@ -63,9 +63,10 @@ button:focus {
   border-width: 0;
 }
 
-html,
-body {
+html, body {
   height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -73,103 +74,54 @@ body {
   color: var(--color-text);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1rem;
+  position: relative;
   background-color: var(--color-white);
   background-image: linear-gradient(to bottom, #ffffff, #f9f9f9);
-  overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.contrast-controls {
-  position: fixed;
-  bottom: 50px; /* Position above footer */
-  left: 10px;
-  z-index: 100;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.contrast-controls:hover {
-  opacity: 1;
-}
-
-.contrast-button {
-  padding: 5px 8px;
-  background-color: #222;
-  border: none;
-  border-radius: 20px;
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-block;
-  text-decoration: none;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
-}
-
-.contrast-button:hover {
-  background-color: #000;
-  transform: scale(1.05);
-}
-
-main {
-  width: 100%;
-  max-width: 1600px;
+/* Simple page layout */
+.page {
   display: flex;
   flex-direction: column;
-  min-height: 85vh;
-  margin: 0 auto; /* Center horizontally */
+  height: 100vh;
+  width: 100%;
   padding: 2rem;
-  background-color: var(--color-background);
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e0e0e0;
-  margin-bottom: 2rem; /* Add space at bottom for better visibility */
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  overflow-y: visible; /* Allow vertical overflow/scrolling */
-  gap: 2rem; /* Space between elements */
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
-  body {
-    padding: 2rem;
-  }
-
-  main {
-    display: grid;
-    grid-template-columns: 61.8% 38.2%;
-    /* Golden ratio split */
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "logo intro"
-      "mission mission";
-    gap: 2rem 3rem;
+  .content {
+    flex-direction: row;
+    align-items: center;
   }
 }
 
-/* Left column with larger logo */
-.left-column {
-  grid-area: logo;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Logo section */
+.logo-section {
+  width: 100%;
+  max-width: 500px;
 }
 
+/* Logo container */
 .logo-container {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
+/* Logo SVG */
 .logo-container svg {
   width: 100%;
-  /* Full width of its container */
   height: auto;
 }
 
@@ -180,38 +132,47 @@ main {
   transition: none; /* Disable transitions for patterns */
 }
 
-/* Mission section - below logo */
-#mission {
-  grid-area: mission;
-  margin-top: 1rem;
-  width: 100%; /* Full width to contain extra-large text */
-  text-align: left;
-  padding-left: 0;
-  margin-left: 0;
-  align-self: start;
-  margin-bottom: 6rem; /* Increased bottom margin to ensure footer visibility */
+/* Text section */
+.text-section {
+  flex: 1;
 }
 
-#mission h3 {
-  font-family: var(--font-serif);
-  font-size: 3rem; /* 3x larger */
-  line-height: var(--mission-line-height); /* Using variable for easy adjustment */
-  font-style: italic;
-  font-weight: normal;
-  margin-bottom: 0.5em; /* Reduced to avoid excessive spacing */
-  max-width: 100%; /* Allow text to use full width */
-  color: #666; /* Medium gray for better contrast in mono version */
-  word-wrap: break-word; /* Ensure text wraps properly */
-}
-
-/* Introduction section - vertically centered against logo */
-.right-column {
-  grid-area: intro;
+/* Controls styling */
+.controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 0;
-  height: 100%;
+  gap: 10px;
+  z-index: 100;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.controls:hover {
+  opacity: 1;
+}
+
+.controls a {
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.controls a:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+  color: white;
+  text-decoration: none;
 }
 
 #introduction {
