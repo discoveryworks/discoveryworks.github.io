@@ -117,29 +117,22 @@ body {
   transform: scale(1.05);
 }
 
-.container {
+main {
   width: 100%;
   max-width: 1600px;
   display: flex;
   flex-direction: column;
   min-height: 85vh;
-  background-color: var(--color-background);
+  margin: 0 auto; /* Center horizontally */
   padding: 2rem;
+  background-color: var(--color-background);
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   border: 1px solid #e0e0e0;
   margin-bottom: 2rem; /* Add space at bottom for better visibility */
   overflow-x: hidden; /* Prevent horizontal overflow */
   overflow-y: visible; /* Allow vertical overflow/scrolling */
-}
-
-/* Golden ratio layout implementation */
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  flex: 1;
-  padding-bottom: 2rem; /* Padding instead of margin to account for sticky footer */
+  gap: 2rem; /* Space between elements */
 }
 
 @media (min-width: 768px) {
@@ -147,7 +140,7 @@ body {
     padding: 2rem;
   }
 
-  .content {
+  main {
     display: grid;
     grid-template-columns: 61.8% 38.2%;
     /* Golden ratio split */

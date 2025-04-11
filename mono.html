@@ -86,10 +86,10 @@
   <body>
     <!-- Accessibility announcement for color changes -->
     <div aria-live="polite" class="sr-only" id="color-change-announcement"></div>
-    <div class="container" role="main">
-      <div class="content">
-        <div class="left-column">
-          <div class="logo-container">
+    
+    <main role="main">
+      <div class="left-column">
+        <div class="logo-container">
             <svg
               id="logo"
               width="100%"
@@ -148,32 +148,31 @@
             <br />exploring how humans and computers interact.
           </h3>
         </div>
-      </div>
+    </main>
 
-      <footer role="contentinfo">
-        <div class="footer-content">
-          <div class="copyright">&copy; Discovery Works</div>
-          <div class="social-links">
-            <a
-              href="https://github.com/discoveryworks"
-              aria-label="GitHub"
-              class="social-icon"
-              rel="noopener noreferrer"
-            >
-              <i class="fa-brands fa-github" aria-hidden="true"></i>
-            </a>
-            <a
-              href="https://bsky.app/profile/discoveryworks.bsky.social"
-              aria-label="Bluesky"
-              class="social-icon"
-              rel="noopener noreferrer"
-            >
-              <i class="fa-solid fa-square" aria-hidden="true"></i>
-            </a>
-          </div>
+    <footer role="contentinfo">
+      <div class="footer-content">
+        <div class="copyright">&copy; Discovery Works</div>
+        <div class="social-links">
+          <a
+            href="https://github.com/discoveryworks"
+            aria-label="GitHub"
+            class="social-icon"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+          <a
+            href="https://bsky.app/profile/discoveryworks.bsky.social"
+            aria-label="Bluesky"
+            class="social-icon"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-solid fa-square" aria-hidden="true"></i>
+          </a>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
 
     <div class="contrast-controls">
       <a href="/" class="contrast-button">Color</a>
