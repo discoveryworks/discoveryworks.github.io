@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Discovery Works is a product development studio exploring how humans and computers interact." />
     <title>Discovery Works</title>
     <link rel="stylesheet" href="stylesheets/default.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,7 +15,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <div class="container">
+    <!-- Accessibility announcement for color changes -->
+    <div aria-live="polite" class="sr-only" id="color-change-announcement"></div>
+    <!-- Controls for animations and contrast -->
+    <div class="animation-controls">
+      <button id="toggle-animations" aria-label="Pause animations">Pause animations</button>
+    </div>
+    <div class="contrast-controls">
+      <a href="/mono" class="contrast-button">Switch to High Contrast</a>
+    </div>
+    <div class="container" role="main">
       <div class="content">
         <div class="left-column">
           <div class="logo-container">
@@ -24,7 +34,10 @@
               viewBox="0 0 228 116"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-labelledby="logo-title"
+              role="img"
             >
+              <title id="logo-title">Discovery Works Logo</title>
               <g style="mix-blend-mode: multiply">
                 <path
                   class="logo-blue"
@@ -50,14 +63,14 @@
 
         <div class="right-column">
           <div id="introduction">
-            <h2 class="question">"If you build it, they will come"?</h2>
-            <h2 class="bad-answer">Doesn't work.</h2>
+            <h2 class="question" id="q1">"If you build it, they will come"?</h2>
+            <h2 class="bad-answer" id="a1" aria-labelledby="q1 a1">Doesn't work.</h2>
 
-            <h2 class="question">"All users think like me"?</h2>
-            <h2 class="bad-answer">Doesn't work.</h2>
+            <h2 class="question" id="q2">"All users think like me"?</h2>
+            <h2 class="bad-answer" id="a2" aria-labelledby="q2 a2">Doesn't work.</h2>
 
-            <h2 class="question">Discovery?</h2>
-            <h2 class="good-answer">Works.</h2>
+            <h2 class="question" id="q3">Discovery?</h2>
+            <h2 class="good-answer" id="a3" aria-labelledby="q3 a3">Works.</h2>
           </div>
         </div>
         
@@ -69,7 +82,7 @@
         </div>
       </div>
 
-      <footer>
+      <footer role="contentinfo">
         <div class="footer-content">
           <div class="copyright">&copy; Discovery Works</div>
           <div class="social-links">
@@ -77,15 +90,17 @@
               href="https://github.com/discoveryworks"
               aria-label="GitHub"
               class="social-icon"
+              rel="noopener noreferrer"
             >
-              <i class="fa-brands fa-github"></i>
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
             </a>
             <a
               href="https://bsky.app/profile/discoveryworks.bsky.social"
               aria-label="Bluesky"
               class="social-icon"
+              rel="noopener noreferrer"
             >
-              <i class="fa-solid fa-square"></i>
+              <i class="fa-solid fa-square" aria-hidden="true"></i>
             </a>
           </div>
         </div>
@@ -144,14 +159,25 @@
         return `linear-gradient(${currentAngle}deg, ${gradientStops})`;
       }
       
-      // Special check for yellow to ensure readability
-      function checkYellowContrast(currentColors) {
+      // Check for contrast to ensure readability
+      function checkColorContrast(currentColors) {
+        // Reset all contrast classes
+        document.documentElement.classList.remove('yellow-secondary');
+        
         // If yellow is assigned to secondary (used for bad-answer)
         if (currentColors[1] === 'yellow') {
           // Add special class to handle yellow contrast
           document.documentElement.classList.add('yellow-secondary');
-        } else {
-          document.documentElement.classList.remove('yellow-secondary');
+        }
+        
+        // Announce color change for screen readers
+        const colorChangeAnnouncement = document.getElementById('color-change-announcement');
+        if (colorChangeAnnouncement) {
+          colorChangeAnnouncement.textContent = "Colors have been updated";
+          // Clear after announcement is read
+          setTimeout(() => {
+            colorChangeAnnouncement.textContent = '';
+          }, 1000);
         }
       }
 
@@ -171,8 +197,8 @@
         document.querySelector('.logo-pink').setAttribute('fill', colors[shuffledColors[1]]);
         document.querySelector('.logo-yellow').setAttribute('fill', colors[shuffledColors[2]]);
         
-        // Check if yellow is used for text elements that need contrast
-        checkYellowContrast(shuffledColors);
+        // Check if colors need contrast adjustments
+        checkColorContrast(shuffledColors);
         
         // Update background gradient
         document.body.style.backgroundImage = generateGradient(shuffledColors);
@@ -192,16 +218,74 @@
         }
       }
       
+      // Add keyboard control to pause animations for people with vestibular disorders
+      let animationsPaused = false;
+      let colorChangeInterval = null;
+      let gradientRotationInterval = null;
+      
+      function toggleAnimations() {
+        animationsPaused = !animationsPaused;
+        const toggleButton = document.getElementById('toggle-animations');
+        
+        if (animationsPaused) {
+          // Stop all intervals
+          clearInterval(colorChangeInterval);
+          clearInterval(gradientRotationInterval);
+          
+          // Update button text
+          if (toggleButton) {
+            toggleButton.textContent = "Resume animations";
+            toggleButton.setAttribute('aria-label', "Resume animations");
+          }
+          
+          // Announce to screen readers
+          const announcement = document.getElementById('color-change-announcement');
+          if (announcement) {
+            announcement.textContent = "Animations paused";
+          }
+        } else {
+          // Restart intervals
+          colorChangeInterval = setInterval(randomizeColors, breathingPace * 4);
+          gradientRotationInterval = setInterval(rotateGradientAngle, 100);
+          
+          // Update button text
+          if (toggleButton) {
+            toggleButton.textContent = "Pause animations";
+            toggleButton.setAttribute('aria-label', "Pause animations");
+          }
+          
+          // Announce to screen readers
+          const announcement = document.getElementById('color-change-announcement');
+          if (announcement) {
+            announcement.textContent = "Animations resumed";
+          }
+        }
+      }
+      
       // Run the randomization on page load
       document.addEventListener('DOMContentLoaded', function() {
         // Initial color setup
         randomizeColors();
         
         // Set up the color change interval (based on breathing pace)
-        setInterval(randomizeColors, breathingPace * 4); // Four breaths between color changes
+        colorChangeInterval = setInterval(randomizeColors, breathingPace * 4); // Four breaths between color changes
         
         // Set up the gradient rotation interval
-        setInterval(rotateGradientAngle, 100); // Rotate slightly every 100ms for smooth rotation
+        gradientRotationInterval = setInterval(rotateGradientAngle, 100); // Rotate slightly every 100ms for smooth rotation
+        
+        // Add keyboard listener for pause/play (spacebar or 'p')
+        document.addEventListener('keydown', function(event) {
+          if (event.key === ' ' || event.key === 'p' || event.key === 'P') {
+            toggleAnimations();
+            event.preventDefault(); // Prevent default actions like scrolling for spacebar
+          }
+        });
+        
+        // Add click listener for the pause button
+        const toggleButton = document.getElementById('toggle-animations');
+        if (toggleButton) {
+          toggleButton.addEventListener('click', toggleAnimations);
+        }
       });
     </script>
   </body>

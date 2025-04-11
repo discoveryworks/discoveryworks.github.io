@@ -1,0 +1,8 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Handle /mono to redirect to mono.html
+RewriteRule ^mono$ mono.html [L]
+
+# Handle /mono/ with trailing slash
+RewriteRule ^mono/$ mono.html [L]
