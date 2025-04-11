@@ -17,7 +17,7 @@
   --color-green-100: #DCEACF;
 
   /* Neutrals */
-  --color-bg: #FFFFFF;
+  --color-cream: #F9F5F0; /* Soft cream background */
   --color-bg-muted: #E1E1E1;
   --color-line: #333333;
   
@@ -30,11 +30,14 @@
   --color-text-light: var(--color-line);
   --color-text-muted: #999999;
   --color-border: var(--color-bg-muted);
-  --color-background: var(--color-bg);
+  --color-background: var(--color-cream);
   
   /* Typography */
   --font-sans: 'Funnel Display', sans-serif;
   --font-serif: 'Libre Baskerville', serif;
+
+  /* Transitions */
+  --transition-speed: 1s;
 }
 
 * {
@@ -96,6 +99,11 @@ body {
   max-width: 400px;
 }
 
+/* SVG transitions */
+.logo-blue, .logo-pink, .logo-yellow {
+  transition: fill var(--transition-speed) ease-in-out;
+}
+
 /* Mission section - left aligned with logo */
 #mission {
   margin-top: 1rem;
@@ -137,13 +145,15 @@ body {
 }
 
 #introduction h2.good-answer {
-  color: var(--color-secondary);
+  color: var(--color-primary);
   margin-bottom: 1.2rem;
+  transition: color var(--transition-speed) ease-in-out;
 }
 
 #introduction h2.bad-answer {
-  color: var(--color-pink-100);
+  color: var(--color-secondary);
   margin-bottom: 1.2rem;
+  transition: color var(--transition-speed) ease-in-out;
 }
 
 /* Footer with social links and hairline separator */
@@ -161,6 +171,12 @@ footer {
   align-items: center;
 }
 
+.copyright {
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
 .social-links {
   display: flex;
   gap: 1.5rem;
@@ -168,7 +184,7 @@ footer {
 
 .social-icon {
   color: var(--color-text-muted);
-  transition: color 0.2s ease;
+  transition: color var(--transition-speed) ease-in-out;
   font-size: 1.5rem;
 }
 
@@ -176,10 +192,15 @@ footer {
   color: var(--color-secondary);
 }
 
+.fa-github, .fa-square {
+  display: inline-block !important;
+  font-size: 1.5rem;
+}
+
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-speed) ease-in-out;
 }
 
 a:hover {
@@ -197,6 +218,10 @@ a:hover {
   }
   
   .social-icon {
+    font-size: 1.75rem;
+  }
+
+  .fa-github, .fa-square {
     font-size: 1.75rem;
   }
 }

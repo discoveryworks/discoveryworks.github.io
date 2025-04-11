@@ -11,10 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500&family=Libre+Baskerville:ital@0;1&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://kit.fontawesome.com/de615a1204.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <div class="container">
@@ -22,6 +19,7 @@
         <div class="left-column">
           <div class="logo-container">
             <svg
+              id="logo"
               width="100%"
               viewBox="0 0 228 116"
               fill="none"
@@ -29,19 +27,22 @@
             >
               <g style="mix-blend-mode: multiply">
                 <path
+                  class="logo-blue"
                   d="M44.3723 0.481934H0.156067V115.487H44.3723C52.3134 115.487 59.6828 113.898 66.5439 110.752C72.6427 107.956 78.0109 104.27 82.712 99.789L53.3299 1.27639C50.4076 0.799716 47.4216 0.481934 44.3405 0.481934H44.3723Z"
-                  fill="#2CAAE2"
+                  fill="#52A7DC"
                 />
               </g>
               <g style="mix-blend-mode: multiply">
                 <path
+                  class="logo-pink"
                   d="M53.1075 0.481934L53.3616 1.27639C57.8722 2.03907 62.2557 3.27841 66.4169 5.21689C73.278 8.36293 79.2815 12.5577 84.3956 17.8011C89.5414 23.0445 93.5755 29.1459 96.5296 36.1053C99.4837 43.0648 100.945 50.3738 100.945 58.0006C100.945 65.6273 99.4837 72.7775 96.5931 79.7369C93.7026 86.6963 89.6685 92.8295 84.5544 98.1047C83.9826 98.7085 83.3473 99.2487 82.7438 99.8207L87.4132 115.519H193.538L227.844 0.513707H53.1075V0.481934Z"
-                  fill="#F06BA8"
+                  fill="#DC6DA5"
                 />
               </g>
               <path
+                class="logo-yellow"
                 d="M96.5932 79.7369C99.4837 72.7774 100.945 65.532 100.945 58.0005C100.945 50.4691 99.4838 43.0648 96.5297 36.1053C93.5756 29.1459 89.5415 23.0445 84.3956 17.8011C79.2498 12.5576 73.278 8.36291 66.4169 5.21686C62.2557 3.31017 57.8722 2.03905 53.3616 1.27637L82.7438 99.7889C83.3473 99.2169 83.9826 98.6767 84.5544 98.0729C89.7002 92.7977 93.7026 86.6645 96.5932 79.7051V79.7369Z"
-                fill="#FEE400"
+                fill="#FBE14B"
               />
             </svg>
           </div>
@@ -90,5 +91,41 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      // Color definitions
+      const colors = {
+        pink: '#DC6DA5',
+        yellow: '#FBE14B',
+        blue: '#52A7DC',
+        green: '#A4C88E'
+      };
+
+      // Object keys as an array for random selection
+      const colorKeys = Object.keys(colors);
+
+      // Function to randomly assign colors to CSS variables
+      function randomizeColors() {
+        // Create a copy of the colorKeys array and shuffle it
+        const shuffledColors = [...colorKeys].sort(() => 0.5 - Math.random());
+        
+        // Assign random colors to semantic variables
+        document.documentElement.style.setProperty('--color-primary', colors[shuffledColors[0]]);
+        document.documentElement.style.setProperty('--color-secondary', colors[shuffledColors[1]]);
+        document.documentElement.style.setProperty('--color-accent', colors[shuffledColors[2]]);
+        document.documentElement.style.setProperty('--color-success', colors[shuffledColors[3]]);
+        
+        // Also change the logo colors to match
+        document.querySelector('.logo-blue').setAttribute('fill', colors[shuffledColors[0]]);
+        document.querySelector('.logo-pink').setAttribute('fill', colors[shuffledColors[1]]);
+        document.querySelector('.logo-yellow').setAttribute('fill', colors[shuffledColors[2]]);
+      }
+      
+      // Run the randomization on page load
+      document.addEventListener('DOMContentLoaded', randomizeColors);
+      
+      // Transition colors every 5 seconds
+      setInterval(randomizeColors, 5000);
+    </script>
   </body>
 </html>
