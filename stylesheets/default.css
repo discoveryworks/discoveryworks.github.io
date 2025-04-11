@@ -106,38 +106,50 @@ body {
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.animation-controls {
+.animation-controls,
+.contrast-controls {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  bottom: 10px;
   z-index: 100;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.animation-controls {
+  right: 10px;
 }
 
 .contrast-controls {
-  position: fixed;
-  top: 50px;
-  right: 10px;
-  z-index: 100;
+  left: 10px;
+}
+
+.animation-controls:hover,
+.contrast-controls:hover {
+  opacity: 1;
 }
 
 #toggle-animations,
 .contrast-button {
-  padding: 6px 12px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
+  padding: 5px 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 20px;
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 0.7rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   display: inline-block;
   text-decoration: none;
-  color: var(--color-text);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
 }
 
 #toggle-animations:hover,
 .contrast-button:hover {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
 }
 
 .container {

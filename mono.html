@@ -18,20 +18,67 @@
     <svg width="0" height="0" style="position: absolute;">
       <!-- Pattern definitions -->
       <defs>
-        <!-- Diagonal Lines Pattern -->
+        <!-- 1. Diagonal Lines Pattern -->
         <pattern id="diagonalLines" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
           <line x1="0" y1="0" x2="0" y2="6" stroke="#000" stroke-width="0.7" />
         </pattern>
         
-        <!-- Dots Pattern -->
+        <!-- 2. Dots Pattern -->
         <pattern id="dots" patternUnits="userSpaceOnUse" width="8" height="8">
           <circle cx="4" cy="4" r="1.2" fill="#000" />
         </pattern>
         
-        <!-- Cross Hatch Pattern -->
+        <!-- 3. Cross Hatch Pattern -->
         <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
           <line x1="0" y1="0" x2="0" y2="8" stroke="#000" stroke-width="0.7" />
           <line x1="0" y1="0" x2="8" y2="0" stroke="#000" stroke-width="0.7" />
+        </pattern>
+        
+        <!-- 4. Zigzag Pattern -->
+        <pattern id="zigzag" patternUnits="userSpaceOnUse" width="10" height="10">
+          <path d="M0,5 L2.5,0 L5,5 L7.5,0 L10,5 L10,10 L7.5,5 L5,10 L2.5,5 L0,10 Z" fill="#000" />
+        </pattern>
+        
+        <!-- 5. Honeycomb Pattern -->
+        <pattern id="honeycomb" patternUnits="userSpaceOnUse" width="15" height="15">
+          <path d="M0,0 L5,0 L7.5,5 L5,10 L0,10 L-2.5,5 Z M10,0 L15,0 L17.5,5 L15,10 L10,10 L7.5,5 Z M5,10 L10,10 L12.5,15 L10,20 L5,20 L2.5,15 Z" fill="#111" stroke="#000" stroke-width="0.2" />
+        </pattern>
+        
+        <!-- 6. Brick Pattern -->
+        <pattern id="bricks" patternUnits="userSpaceOnUse" width="20" height="10">
+          <rect x="0" y="0" width="20" height="10" fill="none" stroke="#000" stroke-width="0.5" />
+          <rect x="10" y="0" width="1" height="5" fill="#000" />
+          <rect x="0" y="5" width="10" height="1" fill="#000" />
+        </pattern>
+        
+        <!-- 7. Horizontal Lines -->
+        <pattern id="horizontalLines" patternUnits="userSpaceOnUse" width="8" height="8">
+          <line x1="0" y1="4" x2="8" y2="4" stroke="#000" stroke-width="0.7" />
+        </pattern>
+        
+        <!-- 8. Vertical Lines -->
+        <pattern id="verticalLines" patternUnits="userSpaceOnUse" width="8" height="8">
+          <line x1="4" y1="0" x2="4" y2="8" stroke="#000" stroke-width="0.7" />
+        </pattern>
+        
+        <!-- 9. Grid Pattern -->
+        <pattern id="grid" patternUnits="userSpaceOnUse" width="10" height="10">
+          <rect x="0" y="0" width="10" height="10" fill="none" stroke="#000" stroke-width="0.5" />
+        </pattern>
+        
+        <!-- 10. Triangles Pattern -->
+        <pattern id="triangles" patternUnits="userSpaceOnUse" width="10" height="10">
+          <polygon points="5,0 10,10 0,10" fill="#333" />
+        </pattern>
+        
+        <!-- 11. Wavy Lines -->
+        <pattern id="waves" patternUnits="userSpaceOnUse" width="20" height="10">
+          <path d="M0,5 C2.5,2.5 7.5,7.5 10,5 C12.5,2.5 17.5,7.5 20,5" fill="none" stroke="#000" stroke-width="0.7" />
+        </pattern>
+        
+        <!-- 12. Circles Pattern -->
+        <pattern id="circles" patternUnits="userSpaceOnUse" width="15" height="15">
+          <circle cx="7.5" cy="7.5" r="5" fill="none" stroke="#000" stroke-width="0.7" />
         </pattern>
       </defs>
     </svg>
@@ -129,7 +176,37 @@
     </div>
 
     <div class="contrast-controls">
-      <a href="/" class="contrast-button">Switch to Color Mode</a>
+      <a href="/" class="contrast-button">Color</a>
     </div>
+    
+    <script>
+      // List of all available patterns
+      const patterns = [
+        'dots', 'diagonalLines', 'crosshatch', 'zigzag', 'honeycomb', 
+        'bricks', 'horizontalLines', 'verticalLines', 'grid', 
+        'triangles', 'waves', 'circles'
+      ];
+      
+      // Function to get a random element from an array
+      function getRandomElement(array) {
+        return array[Math.floor(Math.random() * array.length)];
+      }
+      
+      // Function to get three unique patterns
+      function getThreeUniquePatterns() {
+        const shuffled = [...patterns].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, 3);
+      }
+      
+      // Function to apply random patterns on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        const selectedPatterns = getThreeUniquePatterns();
+        
+        // Apply to logo parts
+        document.querySelector('.logo-blue').setAttribute('fill', `url(#${selectedPatterns[0]})`);
+        document.querySelector('.logo-pink').setAttribute('fill', `url(#${selectedPatterns[1]})`);
+        document.querySelector('.logo-yellow').setAttribute('fill', `url(#${selectedPatterns[2]})`);
+      });
+    </script>
   </body>
 </html>
