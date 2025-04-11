@@ -93,18 +93,69 @@
     </div>
 
     <script>
-      // Color definitions
+      // Timing variables from CSS
+      const cssVars = getComputedStyle(document.documentElement);
+      const breathingPace = parseFloat(cssVars.getPropertyValue('--pace-calm-human-breathing').trim()) * 1000;
+      const gradientRotationSpeed = parseFloat(cssVars.getPropertyValue('--gradient-rotation-speed').trim()) * 1000;
+      
+      // Color definitions - Core colors
       const colors = {
         pink: '#DC6DA5',
         yellow: '#FBE14B',
         blue: '#52A7DC',
         green: '#A4C88E'
       };
+      
+      // Color definitions - Tints (lighter versions for backgrounds)
+      const tints = {
+        pink: '#F5C9DB',  // pink-100
+        yellow: '#FCF4A8', // yellow-100
+        blue: '#A7D3F0',  // blue-100
+        green: '#DCEACF'  // green-100
+      };
 
       // Object keys as an array for random selection
       const colorKeys = Object.keys(colors);
+      
+      // Function to get a random integer between min and max (inclusive)
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      
+      // Current gradient angle
+      let currentAngle = getRandomInt(0, 360);
+      
+      // Function to generate a gradient with slowly rotating angle
+      function generateGradient(shuffledColors) {
+        // Decide on number of stops (2-3)
+        const stopCount = getRandomInt(2, 3);
+        
+        // Generate the stops
+        let gradientStops = '';
+        for (let i = 0; i < stopCount; i++) {
+          const percent = i === 0 ? 0 : i === (stopCount - 1) ? 100 : getRandomInt(30, 70);
+          gradientStops += `${tints[shuffledColors[i % shuffledColors.length]]} ${percent}%`;
+          if (i < stopCount - 1) {
+            gradientStops += ', ';
+          }
+        }
+        
+        // Create the gradient with current angle
+        return `linear-gradient(${currentAngle}deg, ${gradientStops})`;
+      }
+      
+      // Special check for yellow to ensure readability
+      function checkYellowContrast(currentColors) {
+        // If yellow is assigned to secondary (used for bad-answer)
+        if (currentColors[1] === 'yellow') {
+          // Add special class to handle yellow contrast
+          document.documentElement.classList.add('yellow-secondary');
+        } else {
+          document.documentElement.classList.remove('yellow-secondary');
+        }
+      }
 
-      // Function to randomly assign colors to CSS variables
+      // Function to randomly assign colors to semantic variables and update the gradient
       function randomizeColors() {
         // Create a copy of the colorKeys array and shuffle it
         const shuffledColors = [...colorKeys].sort(() => 0.5 - Math.random());
@@ -113,19 +164,45 @@
         document.documentElement.style.setProperty('--color-primary', colors[shuffledColors[0]]);
         document.documentElement.style.setProperty('--color-secondary', colors[shuffledColors[1]]);
         document.documentElement.style.setProperty('--color-accent', colors[shuffledColors[2]]);
-        document.documentElement.style.setProperty('--color-success', colors[shuffledColors[3]]);
+        document.documentElement.style.setProperty('--color-success', colors[shuffledColors[3] || shuffledColors[0]]);
         
         // Also change the logo colors to match
         document.querySelector('.logo-blue').setAttribute('fill', colors[shuffledColors[0]]);
         document.querySelector('.logo-pink').setAttribute('fill', colors[shuffledColors[1]]);
         document.querySelector('.logo-yellow').setAttribute('fill', colors[shuffledColors[2]]);
+        
+        // Check if yellow is used for text elements that need contrast
+        checkYellowContrast(shuffledColors);
+        
+        // Update background gradient
+        document.body.style.backgroundImage = generateGradient(shuffledColors);
+      }
+      
+      // Function to only rotate the gradient angle
+      function rotateGradientAngle() {
+        // Update the angle by 1 degree
+        currentAngle = (currentAngle + 1) % 360;
+        
+        // Only update the angle part of the gradient
+        const currentGradient = document.body.style.backgroundImage;
+        if (currentGradient) {
+          // Replace just the angle in the gradient
+          const newGradient = currentGradient.replace(/\d+deg/, `${currentAngle}deg`);
+          document.body.style.backgroundImage = newGradient;
+        }
       }
       
       // Run the randomization on page load
-      document.addEventListener('DOMContentLoaded', randomizeColors);
-      
-      // Transition colors every 5 seconds
-      setInterval(randomizeColors, 5000);
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initial color setup
+        randomizeColors();
+        
+        // Set up the color change interval (based on breathing pace)
+        setInterval(randomizeColors, breathingPace * 4); // Four breaths between color changes
+        
+        // Set up the gradient rotation interval
+        setInterval(rotateGradientAngle, 100); // Rotate slightly every 100ms for smooth rotation
+      });
     </script>
   </body>
 </html>

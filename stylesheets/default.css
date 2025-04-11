@@ -36,8 +36,16 @@
   --font-sans: 'Funnel Display', sans-serif;
   --font-serif: 'Libre Baskerville', serif;
 
-  /* Transitions */
-  --transition-speed: 1s;
+  /* Timing Variables */
+  --pace-calm-human-breathing: 4.5s;
+  --transition-speed: var(--pace-calm-human-breathing);
+  --gradient-rotation-speed: calc(var(--pace-calm-human-breathing) * 3);
+}
+
+/* Special class for when yellow is used as secondary */
+.yellow-secondary .bad-answer {
+  color: #D4B800 !important; /* Darker yellow for better contrast */
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5) !important;
 }
 
 * {
@@ -52,13 +60,14 @@ html, body {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-background);
   color: var(--color-text);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 2rem;
+  background-color: var(--color-cream); /* Fallback */
+  transition: background-image var(--transition-speed) ease-in-out;
 }
 
 .container {
@@ -67,6 +76,11 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 85vh;
+  background-color: rgba(255, 255, 255, 0.9); /* 90% opacity white */
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .content {
@@ -74,11 +88,13 @@ body {
   grid-template-columns: 1fr;
   gap: 3rem;
   flex: 1;
+  margin-bottom: 1rem; /* Added spacing above footer */
 }
 
 @media (min-width: 768px) {
   .content {
     grid-template-columns: 45% 55%;
+    gap: 4rem; /* Increased spacing between columns */
   }
 }
 
@@ -91,7 +107,7 @@ body {
 
 .logo-container {
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem; /* Increased spacing */
 }
 
 .logo-container svg {
@@ -114,9 +130,10 @@ body {
 #mission h3 {
   font-family: var(--font-serif);
   font-size: 1.1rem;
-  line-height: 1.3;
+  line-height: 1.5; /* Improved line height */
   font-style: italic;
   font-weight: normal;
+  margin-bottom: 0.7em; /* Space between paragraphs */
 }
 
 /* Introduction section - vertically aligned with logo */
@@ -124,6 +141,7 @@ body {
   display: flex;
   align-items: flex-start;
   padding-top: 0;
+  margin-top: 0.5rem; /* Fine-tuned alignment */
 }
 
 #introduction {
@@ -134,9 +152,10 @@ body {
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 1.15rem;
-  line-height: 1;
+  line-height: 1.1; /* Slightly increased line height */
   margin: 0;
   white-space: nowrap;
+  letter-spacing: -0.01em; /* Tighter tracking */
 }
 
 #introduction h2.question {
@@ -154,11 +173,13 @@ body {
   color: var(--color-secondary);
   margin-bottom: 1.2rem;
   transition: color var(--transition-speed) ease-in-out;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for readability */
+  /* Ensure contrast with yellow handled in .yellow-secondary class above */
 }
 
 /* Footer with social links and hairline separator */
 footer {
-  margin-top: 3rem;
+  margin-top: auto; /* Push to bottom */
   padding-top: 1.5rem;
   font-size: 0.875rem;
   color: var(--color-text-muted);
@@ -210,11 +231,11 @@ a:hover {
 /* Responsive font sizes */
 @media (min-width: 768px) {
   #introduction h2 {
-    font-size: 1.4rem;
+    font-size: 1.4rem; /* Smaller for no line breaks */
   }
   
   #mission h3 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
   
   .social-icon {
@@ -228,7 +249,7 @@ a:hover {
 
 @media (min-width: 992px) {
   #introduction h2 {
-    font-size: 1.6rem;
+    font-size: 1.6rem; /* Smaller for no line breaks */
   }
   
   #mission h3 {
@@ -237,8 +258,12 @@ a:hover {
 }
 
 @media (min-width: 1200px) {
+  .container {
+    padding: 3rem; /* More generous padding on larger screens */
+  }
+  
   #introduction h2 {
-    font-size: 1.8rem;
+    font-size: 1.8rem; /* Reduced from 2rem to avoid line breaks */
   }
   
   #mission h3 {
