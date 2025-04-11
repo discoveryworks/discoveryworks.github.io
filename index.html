@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;700;800&family=Libre+Baskerville:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;700;800&family=Rosarivo:ital@0;1&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -184,21 +184,35 @@
         }
       }
 
-      // Function to randomly assign colors to semantic variables and update the gradient
+      // Function to assign colors to semantic variables and update the gradient
       function randomizeColors() {
         // Create a copy of the colorKeys array and shuffle it
         const shuffledColors = [...colorKeys].sort(() => 0.5 - Math.random());
         
-        // Assign random colors to semantic variables
-        document.documentElement.style.setProperty('--color-primary', colors[shuffledColors[0]]);
-        document.documentElement.style.setProperty('--color-secondary', colors[shuffledColors[1]]);
-        document.documentElement.style.setProperty('--color-accent', colors[shuffledColors[2]]);
-        document.documentElement.style.setProperty('--color-success', colors[shuffledColors[3] || shuffledColors[0]]);
+        // Fixed color assignments based on screenshot (uncomment for fixed colors)
+        // const colorAssignment = {
+        //   blue: colors.blue,    // For the left part of the logo
+        //   pink: colors.pink,    // For the left part of the logo and "Works" text
+        //   yellow: colors.yellow // For the right part of the logo and "Doesn't work" text
+        // };
         
-        // Also change the logo colors to match
-        document.querySelector('.logo-blue').setAttribute('fill', colors[shuffledColors[0]]);
-        document.querySelector('.logo-pink').setAttribute('fill', colors[shuffledColors[1]]);
-        document.querySelector('.logo-yellow').setAttribute('fill', colors[shuffledColors[2]]);
+        // Use shuffled colors for dynamic changes
+        const colorAssignment = {
+          blue: colors[shuffledColors[0]],
+          pink: colors[shuffledColors[1]],
+          yellow: colors[shuffledColors[2]]
+        };
+        
+        // Assign colors to semantic variables
+        document.documentElement.style.setProperty('--color-primary', colorAssignment.blue);
+        document.documentElement.style.setProperty('--color-secondary', colorAssignment.yellow);  // For "Doesn't work" text
+        document.documentElement.style.setProperty('--color-accent', colorAssignment.pink);  // For "Works" text
+        document.documentElement.style.setProperty('--color-success', colorAssignment.pink);
+        
+        // Change the logo colors to match
+        document.querySelector('.logo-blue').setAttribute('fill', colorAssignment.blue);
+        document.querySelector('.logo-pink').setAttribute('fill', colorAssignment.pink);
+        document.querySelector('.logo-yellow').setAttribute('fill', colorAssignment.yellow);
         
         // Check if colors need contrast adjustments
         checkColorContrast(shuffledColors);
