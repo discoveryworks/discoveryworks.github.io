@@ -1,13 +1,25 @@
 /* Discovery Works Main Stylesheet */
 :root {
   /* Core Colors */
-  --color-blue: #2CAAE2;
-  --color-pink: #F06BA8;
-  --color-yellow: #FEE400;
-  --color-gray: #666666;
-  --color-light-gray: #999999;
-  --color-white: #FFFFFF;
-  --color-border: #EEEEEE;
+  --color-pink: #DC6DA5;
+  --color-yellow: #FBE14B;
+  --color-blue: #52A7DC;
+  --color-green: #A4C88E;
+
+  /* Tints */
+  --color-pink-300: #E89BBC;
+  --color-pink-100: #F5C9DB;
+  --color-yellow-300: #FBE96C;
+  --color-yellow-100: #FCF4A8;
+  --color-blue-300: #79BAE5;
+  --color-blue-100: #A7D3F0;
+  --color-green-300: #BFD8AD;
+  --color-green-100: #DCEACF;
+
+  /* Neutrals */
+  --color-bg: #FFFFFF;
+  --color-bg-muted: #E1E1E1;
+  --color-line: #333333;
 }
 
 * {
@@ -16,12 +28,13 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Funnel Display', sans-serif;
   background-color: var(--color-white);
   color: var(--color-gray);
   display: flex;
@@ -56,7 +69,8 @@ body {
 .left-column {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the left */
+  align-items: flex-start;
+  /* Align items to the left */
 }
 
 .logo-container {
@@ -84,10 +98,13 @@ body {
   font-weight: normal;
 }
 
-/* Introduction section - vertically centered */
+/* Introduction section - vertically aligned with logo */
 .right-column {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  /* Align with top of logo */
+  padding-top: 0;
+  /* Remove top padding to align with logo */
 }
 
 #introduction {
@@ -95,8 +112,8 @@ body {
 }
 
 #introduction h2 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 500;
   font-size: 1.15rem;
   line-height: 1;
   margin: 0;
@@ -108,26 +125,37 @@ body {
   margin-bottom: 0.1rem;
 }
 
-#introduction h2.answer {
+#introduction h2.good-answer {
   color: var(--color-pink);
   margin-bottom: 1.2rem;
 }
 
+#introduction h2.bad-answer {
+  color: var(--color-pink-100);
+  margin-bottom: 1.2rem;
+}
+
+
 /* Footer with social links and hairline separator */
 footer {
-  margin-top: 3rem; /* More breathing room */
+  margin-top: 3rem;
+  /* More breathing room */
   padding-top: 1.5rem;
-  text-align: center;
   font-size: 0.875rem;
   color: var(--color-light-gray);
-  border-top: 1px solid var(--color-border); /* Hairline separator */
+  border-top: 1px solid var(--color-border);
+  /* Hairline separator */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .social-links {
   display: flex;
-  justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 .social-icon {
@@ -155,11 +183,11 @@ a:hover {
   #introduction h2 {
     font-size: 1.4rem;
   }
-  
+
   #mission h3 {
     font-size: 1.2rem;
   }
-  
+
   .social-icon {
     font-size: 1.75rem;
   }
@@ -169,7 +197,7 @@ a:hover {
   #introduction h2 {
     font-size: 1.6rem;
   }
-  
+
   #mission h3 {
     font-size: 1.3rem;
   }
@@ -179,7 +207,7 @@ a:hover {
   #introduction h2 {
     font-size: 1.8rem;
   }
-  
+
   #mission h3 {
     font-size: 1.4rem;
   }
