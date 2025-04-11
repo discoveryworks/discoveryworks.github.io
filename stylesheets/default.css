@@ -40,6 +40,9 @@
   --pace-calm-human-breathing: 4.5s;
   --transition-speed: var(--pace-calm-human-breathing);
   --gradient-rotation-speed: calc(var(--pace-calm-human-breathing) * 3);
+  
+  /* Golden Ratio */
+  --golden-ratio: 1.618;
 }
 
 /* Special class for when yellow is used as secondary */
@@ -65,14 +68,14 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 1rem;
   background-color: var(--color-cream); /* Fallback */
   transition: background-image var(--transition-speed) ease-in-out;
 }
 
 .container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   display: flex;
   flex-direction: column;
   min-height: 85vh;
@@ -83,36 +86,49 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
+/* Golden ratio layout implementation */
 .content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   flex: 1;
-  margin-bottom: 1rem; /* Added spacing above footer */
+  margin-bottom: 2rem; /* Spacing above footer */
 }
 
 @media (min-width: 768px) {
+  body {
+    padding: 2rem;
+  }
+  
   .content {
-    grid-template-columns: 45% 55%;
-    gap: 4rem; /* Increased spacing between columns */
+    display: grid;
+    grid-template-columns: 61.8% 38.2%; /* Golden ratio split */
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+      "logo intro"
+      "mission mission";
+    gap: 2rem 3rem;
   }
 }
 
-/* Left column with logo and mission */
+/* Left column with larger logo */
 .left-column {
+  grid-area: logo;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .logo-container {
   width: 100%;
-  margin-bottom: 3rem; /* Increased spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo-container svg {
-  width: 100%;
-  max-width: 400px;
+  width: 100%; /* Full width of its container */
+  height: auto;
 }
 
 /* SVG transitions */
@@ -120,53 +136,64 @@ body {
   transition: fill var(--transition-speed) ease-in-out;
 }
 
-/* Mission section - left aligned with logo */
+/* Mission section - below logo */
 #mission {
+  grid-area: mission;
   margin-top: 1rem;
+  width: 61.8%; /* Golden ratio width */
   text-align: left;
   padding-left: 0;
+  margin-left: 0;
+  align-self: start;
 }
 
 #mission h3 {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.5; /* Improved line height */
   font-style: italic;
   font-weight: normal;
   margin-bottom: 0.7em; /* Space between paragraphs */
+  max-width: 36em; /* Optimal line length */
 }
 
-/* Introduction section - vertically aligned with logo */
+/* Introduction section - vertically centered against logo */
 .right-column {
+  grid-area: intro;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   padding-top: 0;
-  margin-top: 0.5rem; /* Fine-tuned alignment */
+  height: 100%;
 }
 
 #introduction {
   width: 100%;
 }
 
+/* Improved typographic contrast */
 #introduction h2 {
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 700; /* Bolder font for more contrast */
   font-size: 1.15rem;
-  line-height: 1.1; /* Slightly increased line height */
+  line-height: 1; /* Tighter than mission text */
   margin: 0;
   white-space: nowrap;
-  letter-spacing: -0.01em; /* Tighter tracking */
+  letter-spacing: -0.02em; /* More dramatic tracking */
+  text-transform: none; /* Normal case */
 }
 
 #introduction h2.question {
   color: var(--color-text-muted);
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.15rem;
 }
 
 #introduction h2.good-answer {
   color: var(--color-primary);
   margin-bottom: 1.2rem;
   transition: color var(--transition-speed) ease-in-out;
+  letter-spacing: -0.01em; /* Slightly different from questions */
+  font-weight: 800; /* Heavier weight for more contrast */
 }
 
 #introduction h2.bad-answer {
@@ -174,7 +201,8 @@ body {
   margin-bottom: 1.2rem;
   transition: color var(--transition-speed) ease-in-out;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for readability */
-  /* Ensure contrast with yellow handled in .yellow-secondary class above */
+  letter-spacing: -0.01em; /* Slightly different from questions */
+  font-weight: 800; /* Heavier weight for more contrast */
 }
 
 /* Footer with social links and hairline separator */
@@ -228,14 +256,35 @@ a:hover {
   color: var(--color-secondary);
 }
 
-/* Responsive font sizes */
+/* Baseline alignment fix */
 @media (min-width: 768px) {
+  /* Create a baseline grid */
+  body {
+    --baseline: 1.5rem;
+    line-height: var(--baseline);
+  }
+  
   #introduction h2 {
-    font-size: 1.4rem; /* Smaller for no line breaks */
+    font-size: 1.4rem;
+    /* Align to baseline grid */
+    line-height: calc(var(--baseline) * 1);
+    margin-bottom: 0;
+  }
+  
+  #introduction h2.question {
+    margin-top: calc(var(--baseline) * 0.5);
+  }
+  
+  #introduction h2.bad-answer,
+  #introduction h2.good-answer {
+    margin-bottom: calc(var(--baseline) * 0.5);
   }
   
   #mission h3 {
     font-size: 1.25rem;
+    /* Align to baseline grid */
+    line-height: calc(var(--baseline) * 1);
+    margin-bottom: calc(var(--baseline) * 0.5);
   }
   
   .social-icon {
@@ -249,7 +298,7 @@ a:hover {
 
 @media (min-width: 992px) {
   #introduction h2 {
-    font-size: 1.6rem; /* Smaller for no line breaks */
+    font-size: 1.6rem;
   }
   
   #mission h3 {
@@ -259,14 +308,29 @@ a:hover {
 
 @media (min-width: 1200px) {
   .container {
-    padding: 3rem; /* More generous padding on larger screens */
+    padding: 3rem;
   }
   
   #introduction h2 {
-    font-size: 1.8rem; /* Reduced from 2rem to avoid line breaks */
+    font-size: 1.8rem;
   }
   
   #mission h3 {
     font-size: 1.4rem;
+  }
+}
+
+/* For larger displays, make everything bigger proportionally */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1800px;
+  }
+  
+  #introduction h2 {
+    font-size: 2.2rem;
+  }
+  
+  #mission h3 {
+    font-size: 1.6rem;
   }
 }
