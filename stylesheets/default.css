@@ -8,7 +8,7 @@
 
   /* Typography */
   --font-sans: 'Funnel Display', sans-serif;
-  --font-serif: 'Rosarivo', serif;
+  --font-serif: 'Crimson Pro', serif;
   
   /* Timing Variables */
   --pace-calm-human-breathing: 4.5s;
@@ -37,63 +37,119 @@
 
 html, body {
   height: 100%;
-  width: 100%;
-  overflow: hidden;
 }
 
 body {
   font-family: var(--font-sans);
-  color: #333;
+  color: var(--color-text);
   display: flex;
   flex-direction: column;
-  position: relative;
-  transition: background-image var(--transition-speed) ease-in-out;
-}
-
-/* Page layout */
-.page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-  padding: 2rem;
-  max-width: 1600px;
-  margin: 0 auto;
-}
-
-/* Content area with two columns */
-.content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
-  width: 100%;
-  margin-bottom: 4rem;
+  justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  transition: background-image var(--transition-speed) ease-in-out;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.animation-controls,
+.contrast-controls {
+  position: fixed;
+  bottom: 50px; /* Position above footer */
+  z-index: 100;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.animation-controls {
+  right: 10px;
+}
+
+.contrast-controls {
+  left: 10px;
+}
+
+.animation-controls:hover,
+.contrast-controls:hover {
+  opacity: 1;
+}
+
+#toggle-animations,
+.contrast-button {
+  padding: 5px 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 20px;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+#toggle-animations:hover,
+.contrast-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+main {
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh;
+  margin: 0 auto; /* Center horizontally */
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9); /* 90% opacity white */
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem; /* Add space at bottom for better visibility */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-y: visible; /* Allow vertical overflow/scrolling */
+  gap: 2rem; /* Space between elements */
 }
 
 @media (min-width: 768px) {
-  .content {
-    grid-template-columns: 56% 44%; /* Based on screenshot proportions */
-    margin-bottom: 6rem;
+  body {
+    padding: 2rem;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 61.8% 38.2%; /* Golden ratio split */
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "logo intro"
+      "mission mission";
+    gap: 2rem 3rem;
   }
 }
 
 /* Left column with larger logo */
 .left-column {
+  grid-area: logo;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
 }
 
-/* Logo container */
 .logo-container {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo-container svg {
   width: 100%;
   height: auto;
-  max-height: 35vh; /* Control the maximum height */
 }
 
 /* SVG transitions */
@@ -105,46 +161,45 @@ body {
 
 /* Right column */
 .right-column {
+  grid-area: intro;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-right: 2rem;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 /* Introduction section */
 #introduction {
-  margin-bottom: 2rem;
+  width: 100%;
 }
 
 #introduction h2 {
   font-weight: 500;
-  font-size: 2rem;
-  line-height: 1.2;
+  font-size: 1.2rem;
+  line-height: 1.3;
   margin: 0;
-  letter-spacing: 0.02em;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
 }
 
 #introduction h2.question {
   color: #999;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.15rem;
 }
 
 #introduction h2.good-answer {
-  color: var(--color-pink); /* Match screenshot */
-  margin-bottom: 3rem;
+  color: var(--color-blue);
+  margin-bottom: 2.5rem;
   transition: color var(--transition-speed) ease-in-out;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   font-weight: 700;
-  font-size: 2.2rem;
 }
 
 #introduction h2.bad-answer {
-  color: var(--color-yellow); /* Match screenshot */
-  margin-bottom: 3rem;
+  color: var(--color-pink);
+  margin-bottom: 2.5rem;
   transition: color var(--transition-speed) ease-in-out;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   font-weight: 700;
-  font-size: 2.2rem;
 }
 
 #introduction h2:last-child {
@@ -159,33 +214,38 @@ body {
 
 /* Mission statement */
 #mission {
+  grid-area: mission;
+  margin-top: 1rem;
   width: 100%;
-  margin-top: 2rem;
 }
 
 #mission h3 {
   font-family: var(--font-serif);
-  font-size: 2.5rem;
-  line-height: 1.4;
+  font-size: 1.7rem;
+  line-height: 1.8;
   font-style: italic;
   font-weight: normal;
   color: #555;
-  max-width: 90%;
 }
 
-/* Larger screens */
-@media (min-width: 1200px) {
+/* Responsive sizing */
+@media (min-width: 992px) {
   #introduction h2 {
-    font-size: 2.4rem;
-  }
-  
-  #introduction h2.good-answer,
-  #introduction h2.bad-answer {
-    font-size: 2.6rem;
+    font-size: 1.4rem;
   }
   
   #mission h3 {
-    font-size: 3rem;
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #introduction h2 {
+    font-size: 1.6rem;
+  }
+  
+  #mission h3 {
+    font-size: 2.5rem;
   }
 }
 
