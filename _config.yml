@@ -1,6 +1,6 @@
 # Site settings
 title: Discovery Works
-description: Straightforward, honest, financial advice. We are a financial advisory group that focuses on investment planning, asset management, and overall financial literacy.
+description: Discovery Works is a product development studio exploring how humans and computers work together.
 baseurl: ""
 url: "https://discovery.works"
 
@@ -34,11 +34,11 @@ exclude:
 
 # Site navigation
 nav_links:
-  - title: Services
-    url: /services/
-  - title: About
-    url: /about/
-  - title: Journal
-    url: /journal/
-  - title: Get Started
-    url: /get-started/
+  # - title: Services
+  #   url: /services/
+  # - title: About
+  #   url: /about/
+  # - title: Journal
+  #   url: /journal/
+  # - title: Get Started
+  #   url: /get-started/
