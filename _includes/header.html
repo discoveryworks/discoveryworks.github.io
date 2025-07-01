@@ -1,0 +1,26 @@
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav__brand">
+        <a href="{{ '/' | relative_url }}" class="nav__logo">CEDAR GROUP</a>
+      </div>
+      
+      <ul class="nav__menu">
+        {% for link in site.nav_links %}
+          <li class="nav__item">
+            <a href="{{ link.url | relative_url }}" class="nav__link">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+        <li class="nav__item">
+          <a href="/cart/" class="nav__cart">🛒 0</a>
+        </li>
+      </ul>
+      
+      <button class="nav__toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
