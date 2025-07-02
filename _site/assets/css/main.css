@@ -159,13 +159,13 @@ body {
 }
 
 .hero {
-  /* Animated gradient background */
-  background: linear-gradient(270deg, var(--color-palette-pink), var(--color-palette-blue), var(--color-palette-yellow), var(--color-palette-green), var(--color-palette-pink));
+  /* Curvy, layered gradient background */
+  background: linear-gradient(135deg, var(--hero-gradient-start, var(--color-palette-pink)), var(--color-palette-blue)), radial-gradient(circle at 70% 30%, var(--color-palette-yellow) 0%, transparent 70%), radial-gradient(circle at 30% 70%, var(--color-palette-green) 0%, transparent 70%);
   background-size: 1200% 1200%;
   animation: gradientMove 180s ease-in-out infinite;
   color: #fff;
   padding: calc(80px + var(--space-32)) 0 var(--space-32);
-  text-align: center;
+  text-align: left;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
@@ -520,6 +520,22 @@ h2, .section__title {
 
 body {
   font-family: var(--font-sans);
+}
+
+.hero--pink {
+  --hero-gradient-start: var(--color-palette-pink);
+}
+
+.hero--blue {
+  --hero-gradient-start: var(--color-palette-blue);
+}
+
+.hero--yellow {
+  --hero-gradient-start: var(--color-palette-yellow);
+}
+
+.hero--green {
+  --hero-gradient-start: var(--color-palette-green);
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -2,14 +2,14 @@
 document.addEventListener('DOMContentLoaded', function() {
   const navToggle = document.querySelector('.nav__toggle');
   const navMenu = document.querySelector('.nav__menu');
-  
+
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', function() {
       navMenu.classList.toggle('nav__menu--open');
       navToggle.classList.toggle('nav__toggle--open');
     });
   }
-  
+
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -23,20 +23,28 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-  
+
   // Header scroll effect
   const header = document.querySelector('.site-header');
   let lastScrollTop = 0;
-  
+
   window.addEventListener('scroll', function() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     if (scrollTop > lastScrollTop && scrollTop > 100) {
       header.style.transform = 'translateY(-100%)';
     } else {
       header.style.transform = 'translateY(0)';
     }
-    
+
     lastScrollTop = scrollTop;
   });
+
+  // Randomize hero gradient start color
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    const heroClasses = ['hero--pink', 'hero--blue', 'hero--yellow', 'hero--green'];
+    const randomClass = heroClasses[Math.floor(Math.random() * heroClasses.length)];
+    hero.classList.add(randomClass);
+  }
 });
