@@ -159,10 +159,9 @@ body {
 }
 
 .hero {
-  /* Curvy, layered gradient background */
-  background: linear-gradient(135deg, var(--hero-gradient-start, var(--color-palette-pink)), var(--color-palette-blue)), radial-gradient(circle at 70% 30%, var(--color-palette-yellow) 0%, transparent 70%), radial-gradient(circle at 30% 70%, var(--color-palette-green) 0%, transparent 90%);
+  background: linear-gradient(135deg, var(--hero-gradient-start, var(--color-palette-pink)), var(--color-palette-blue)), radial-gradient(circle at 70% 30%, var(--color-palette-yellow) 0%, transparent 70%), radial-gradient(circle at 30% 70%, var(--color-palette-green) 0%, transparent 70%);
   background-size: 1200% 1200%;
-  animation: gradientMove 18s ease-in-out infinite;
+  animation: gradientMove 36s ease-in-out infinite;
   color: #fff;
   padding: calc(80px + var(--space-32)) 0 var(--space-32);
   text-align: left;
@@ -214,11 +213,11 @@ body {
 .hero__brand {
   display: block;
   font-family: var(--font-mono);
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 800;
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 900;
   line-height: 1.05;
   margin-top: var(--space-12);
-  letter-spacing: -0.05em;
+  letter-spacing: 0.01em;
   color: #111;
 }
 
@@ -455,9 +454,10 @@ body {
     background-position: 0% 50%;
   }
 }
-.hero, .hero__content, .hero__copy, .hero__brand {
+.container, .hero__content, .hero__copy, .hero__brand {
   text-align: left !important;
   align-items: flex-start !important;
+  margin-left: 0 !important;
 }
 
 .lab-list {
@@ -538,26 +538,23 @@ body {
   --hero-gradient-start: var(--color-palette-green);
 }
 
-h2.question, .question {
+h2.question, .question, h2.bad-answer, .bad-answer {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.2rem);
   font-weight: 300;
   line-height: 1.08;
-  margin-bottom: 0.1em;
-  margin-top: 0;
-  color: #fff;
   letter-spacing: -0.01em;
+  margin-top: 0;
+}
+
+h2.question, .question {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.1em;
 }
 
 h2.bad-answer, .bad-answer {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(2.2rem, 4.5vw, 2.8rem);
-  font-weight: 300;
-  line-height: 1.08;
-  margin-top: 0;
+  color: rgba(0, 0, 0, 0.7);
   margin-bottom: 2.2rem;
-  color: var(--color-dark);
-  letter-spacing: -0.01em;
 }
 
 /*# sourceMappingURL=main.css.map */
