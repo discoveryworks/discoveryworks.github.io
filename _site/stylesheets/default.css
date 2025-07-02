@@ -204,7 +204,7 @@ main {
     margin: 2.5rem;
     3 transition: color var(--transition-speed) ease-in-out;
     letter-spacing: 0.02em;
-    foweight: 700;
+    font-weight: 700;
   }
 
   #introduction h2.bad-answer {
@@ -365,3 +365,4 @@ main {
       font-size: 2.5rem;
     }
   }
+}

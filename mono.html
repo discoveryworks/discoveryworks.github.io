@@ -3,11 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Discovery Works is a product development studio exploring how humans and computers interact." />
+    <meta
+      name="description"
+      content="Discovery Works is a product development studio exploring how humans and computers interact."
+    />
     <title>Discovery Works - High Contrast</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicons/favicon-16x16.png"
+    />
     <link rel="stylesheet" href="stylesheets/mono.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,143 +28,245 @@
       href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500;700;800&family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <script src="favicon.js"></script>
-    
+
     <!-- SVG Patterns for Monochrome Version -->
-    <svg width="0" height="0" style="position: absolute;">
+    <svg width="0" height="0" style="position: absolute">
       <!-- Pattern definitions -->
       <defs>
         <!-- 1. Diagonal Lines Pattern -->
-        <pattern id="diagonalLines" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+        <pattern
+          id="diagonalLines"
+          patternUnits="userSpaceOnUse"
+          width="6"
+          height="6"
+          patternTransform="rotate(45)"
+        >
           <line x1="0" y1="0" x2="0" y2="6" stroke="#000" stroke-width="0.7" />
         </pattern>
-        
+
         <!-- 2. Dots Pattern -->
         <pattern id="dots" patternUnits="userSpaceOnUse" width="8" height="8">
           <circle cx="4" cy="4" r="1.2" fill="#000" />
         </pattern>
-        
+
         <!-- 3. Cross Hatch Pattern -->
-        <pattern id="crosshatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+        <pattern
+          id="crosshatch"
+          patternUnits="userSpaceOnUse"
+          width="8"
+          height="8"
+          patternTransform="rotate(45)"
+        >
           <line x1="0" y1="0" x2="0" y2="8" stroke="#000" stroke-width="0.7" />
           <line x1="0" y1="0" x2="8" y2="0" stroke="#000" stroke-width="0.7" />
         </pattern>
-        
+
         <!-- 4. Zigzag Pattern -->
-        <pattern id="zigzag" patternUnits="userSpaceOnUse" width="10" height="10">
-          <path d="M0,5 L2.5,0 L5,5 L7.5,0 L10,5 L10,10 L7.5,5 L5,10 L2.5,5 L0,10 Z" fill="#000" />
+        <pattern
+          id="zigzag"
+          patternUnits="userSpaceOnUse"
+          width="10"
+          height="10"
+        >
+          <path
+            d="M0,5 L2.5,0 L5,5 L7.5,0 L10,5 L10,10 L7.5,5 L5,10 L2.5,5 L0,10 Z"
+            fill="#000"
+          />
         </pattern>
-        
+
         <!-- 5. Honeycomb Pattern -->
-        <pattern id="honeycomb" patternUnits="userSpaceOnUse" width="15" height="15">
-          <path d="M0,0 L5,0 L7.5,5 L5,10 L0,10 L-2.5,5 Z M10,0 L15,0 L17.5,5 L15,10 L10,10 L7.5,5 Z M5,10 L10,10 L12.5,15 L10,20 L5,20 L2.5,15 Z" fill="#111" stroke="#000" stroke-width="0.2" />
+        <pattern
+          id="honeycomb"
+          patternUnits="userSpaceOnUse"
+          width="15"
+          height="15"
+        >
+          <path
+            d="M0,0 L5,0 L7.5,5 L5,10 L0,10 L-2.5,5 Z M10,0 L15,0 L17.5,5 L15,10 L10,10 L7.5,5 Z M5,10 L10,10 L12.5,15 L10,20 L5,20 L2.5,15 Z"
+            fill="#111"
+            stroke="#000"
+            stroke-width="0.2"
+          />
         </pattern>
-        
+
         <!-- 6. Brick Pattern -->
-        <pattern id="bricks" patternUnits="userSpaceOnUse" width="20" height="10">
-          <rect x="0" y="0" width="20" height="10" fill="none" stroke="#000" stroke-width="0.5" />
+        <pattern
+          id="bricks"
+          patternUnits="userSpaceOnUse"
+          width="20"
+          height="10"
+        >
+          <rect
+            x="0"
+            y="0"
+            width="20"
+            height="10"
+            fill="none"
+            stroke="#000"
+            stroke-width="0.5"
+          />
           <rect x="10" y="0" width="1" height="5" fill="#000" />
           <rect x="0" y="5" width="10" height="1" fill="#000" />
         </pattern>
-        
+
         <!-- 7. Horizontal Lines -->
-        <pattern id="horizontalLines" patternUnits="userSpaceOnUse" width="8" height="8">
+        <pattern
+          id="horizontalLines"
+          patternUnits="userSpaceOnUse"
+          width="8"
+          height="8"
+        >
           <line x1="0" y1="4" x2="8" y2="4" stroke="#000" stroke-width="0.7" />
         </pattern>
-        
+
         <!-- 8. Vertical Lines -->
-        <pattern id="verticalLines" patternUnits="userSpaceOnUse" width="8" height="8">
+        <pattern
+          id="verticalLines"
+          patternUnits="userSpaceOnUse"
+          width="8"
+          height="8"
+        >
           <line x1="4" y1="0" x2="4" y2="8" stroke="#000" stroke-width="0.7" />
         </pattern>
-        
+
         <!-- 9. Grid Pattern -->
         <pattern id="grid" patternUnits="userSpaceOnUse" width="10" height="10">
-          <rect x="0" y="0" width="10" height="10" fill="none" stroke="#000" stroke-width="0.5" />
+          <rect
+            x="0"
+            y="0"
+            width="10"
+            height="10"
+            fill="none"
+            stroke="#000"
+            stroke-width="0.5"
+          />
         </pattern>
-        
+
         <!-- 10. Triangles Pattern -->
-        <pattern id="triangles" patternUnits="userSpaceOnUse" width="10" height="10">
+        <pattern
+          id="triangles"
+          patternUnits="userSpaceOnUse"
+          width="10"
+          height="10"
+        >
           <polygon points="5,0 10,10 0,10" fill="#333" />
         </pattern>
-        
+
         <!-- 11. Wavy Lines -->
-        <pattern id="waves" patternUnits="userSpaceOnUse" width="20" height="10">
-          <path d="M0,5 C2.5,2.5 7.5,7.5 10,5 C12.5,2.5 17.5,7.5 20,5" fill="none" stroke="#000" stroke-width="0.7" />
+        <pattern
+          id="waves"
+          patternUnits="userSpaceOnUse"
+          width="20"
+          height="10"
+        >
+          <path
+            d="M0,5 C2.5,2.5 7.5,7.5 10,5 C12.5,2.5 17.5,7.5 20,5"
+            fill="none"
+            stroke="#000"
+            stroke-width="0.7"
+          />
         </pattern>
-        
+
         <!-- 12. Circles Pattern -->
-        <pattern id="circles" patternUnits="userSpaceOnUse" width="15" height="15">
-          <circle cx="7.5" cy="7.5" r="5" fill="none" stroke="#000" stroke-width="0.7" />
+        <pattern
+          id="circles"
+          patternUnits="userSpaceOnUse"
+          width="15"
+          height="15"
+        >
+          <circle
+            cx="7.5"
+            cy="7.5"
+            r="5"
+            fill="none"
+            stroke="#000"
+            stroke-width="0.7"
+          />
         </pattern>
       </defs>
     </svg>
   </head>
   <body>
     <!-- Accessibility announcement for color changes -->
-    <div aria-live="polite" class="sr-only" id="color-change-announcement"></div>
-    
+    <div
+      aria-live="polite"
+      class="sr-only"
+      id="color-change-announcement"
+    ></div>
+
     <main role="main">
       <div class="left-column">
         <div class="logo-container">
-            <svg
-              id="logo"
-              width="100%"
-              viewBox="0 0 228 116"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-labelledby="logo-title"
-              role="img"
-            >
-              <title id="logo-title">Discovery Works Logo</title>
-              <g style="mix-blend-mode: multiply">
-                <path
-                  class="logo-blue"
-                  d="M44.3723 0.481934H0.156067V115.487H44.3723C52.3134 115.487 59.6828 113.898 66.5439 110.752C72.6427 107.956 78.0109 104.27 82.712 99.789L53.3299 1.27639C50.4076 0.799716 47.4216 0.481934 44.3405 0.481934H44.3723Z"
-                  fill="url(#dots)"
-                  stroke="#000000" 
-                  stroke-width="0.5"
-                />
-              </g>
-              <g style="mix-blend-mode: multiply">
-                <path
-                  class="logo-pink"
-                  d="M53.1075 0.481934L53.3616 1.27639C57.8722 2.03907 62.2557 3.27841 66.4169 5.21689C73.278 8.36293 79.2815 12.5577 84.3956 17.8011C89.5414 23.0445 93.5755 29.1459 96.5296 36.1053C99.4837 43.0648 100.945 50.3738 100.945 58.0006C100.945 65.6273 99.4837 72.7775 96.5931 79.7369C93.7026 86.6963 89.6685 92.8295 84.5544 98.1047C83.9826 98.7085 83.3473 99.2487 82.7438 99.8207L87.4132 115.519H193.538L227.844 0.513707H53.1075V0.481934Z"
-                  fill="url(#diagonalLines)"
-                  stroke="#000000" 
-                  stroke-width="0.5"
-                />
-              </g>
+          <svg
+            id="logo"
+            width="100%"
+            viewBox="0 0 228 116"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-labelledby="logo-title"
+            role="img"
+          >
+            <title id="logo-title">Discovery Works Logo</title>
+            <g style="mix-blend-mode: multiply">
               <path
-                class="logo-yellow"
-                d="M96.5932 79.7369C99.4837 72.7774 100.945 65.532 100.945 58.0005C100.945 50.4691 99.4838 43.0648 96.5297 36.1053C93.5756 29.1459 89.5415 23.0445 84.3956 17.8011C79.2498 12.5576 73.278 8.36291 66.4169 5.21686C62.2557 3.31017 57.8722 2.03905 53.3616 1.27637L82.7438 99.7889C83.3473 99.2169 83.9826 98.6767 84.5544 98.0729C89.7002 92.7977 93.7026 86.6645 96.5932 79.7051V79.7369Z"
-                fill="url(#crosshatch)"
-                stroke="#000000" 
+                class="logo-blue"
+                d="M44.3723 0.481934H0.156067V115.487H44.3723C52.3134 115.487 59.6828 113.898 66.5439 110.752C72.6427 107.956 78.0109 104.27 82.712 99.789L53.3299 1.27639C50.4076 0.799716 47.4216 0.481934 44.3405 0.481934H44.3723Z"
+                fill="url(#dots)"
+                stroke="#000000"
                 stroke-width="0.5"
               />
-            </svg>
-          </div>
+            </g>
+            <g style="mix-blend-mode: multiply">
+              <path
+                class="logo-pink"
+                d="M53.1075 0.481934L53.3616 1.27639C57.8722 2.03907 62.2557 3.27841 66.4169 5.21689C73.278 8.36293 79.2815 12.5577 84.3956 17.8011C89.5414 23.0445 93.5755 29.1459 96.5296 36.1053C99.4837 43.0648 100.945 50.3738 100.945 58.0006C100.945 65.6273 99.4837 72.7775 96.5931 79.7369C93.7026 86.6963 89.6685 92.8295 84.5544 98.1047C83.9826 98.7085 83.3473 99.2487 82.7438 99.8207L87.4132 115.519H193.538L227.844 0.513707H53.1075V0.481934Z"
+                fill="url(#diagonalLines)"
+                stroke="#000000"
+                stroke-width="0.5"
+              />
+            </g>
+            <path
+              class="logo-yellow"
+              d="M96.5932 79.7369C99.4837 72.7774 100.945 65.532 100.945 58.0005C100.945 50.4691 99.4838 43.0648 96.5297 36.1053C93.5756 29.1459 89.5415 23.0445 84.3956 17.8011C79.2498 12.5576 73.278 8.36291 66.4169 5.21686C62.2557 3.31017 57.8722 2.03905 53.3616 1.27637L82.7438 99.7889C83.3473 99.2169 83.9826 98.6767 84.5544 98.0729C89.7002 92.7977 93.7026 86.6645 96.5932 79.7051V79.7369Z"
+              fill="url(#crosshatch)"
+              stroke="#000000"
+              stroke-width="0.5"
+            />
+          </svg>
         </div>
+      </div>
 
-        <div class="right-column">
-          <div id="introduction">
-            <h2 class="question" id="q1">"If you build it, they will come"?</h2>
-            <h2 class="bad-answer" id="a1" aria-labelledby="q1 a1">Doesn't work.</h2>
+      <div class="right-column">
+        <div id="introduction">
+          <h2 class="question" id="q1">"If you build it, they will come"?</h2>
+          <h2 class="bad-answer" id="a1" aria-labelledby="q1 a1">
+            Doesn't work.
+          </h2>
 
-            <h2 class="question" id="q2">"All users think like me"?</h2>
-            <h2 class="bad-answer" id="a2" aria-labelledby="q2 a2">Doesn't work.</h2>
+          <h2 class="question" id="q2">"All users think like me"?</h2>
+          <h2 class="bad-answer" id="a2" aria-labelledby="q2 a2">
+            Doesn't work.
+          </h2>
 
-            <h2 class="question" id="q3">Discovery?</h2>
-            <h2 class="good-answer" id="a3" aria-labelledby="q3 a3">Works.</h2>
-          </div>
+          <h2 class="question" id="q3">Discovery?</h2>
+          <h2 class="good-answer" id="a3" aria-labelledby="q3 a3">Works.</h2>
         </div>
-        
-        <div id="mission">
-          <h3>
-            Discovery Works <br />is a product development studio
-            <br />exploring how humans and computers interact.
-          </h3>
-        </div>
+      </div>
+
+      <div id="mission">
+        <h3>
+          Discovery Works <br />is a product development studio <br />exploring
+          how humans and computers interact.
+        </h3>
+      </div>
     </main>
 
     <div class="contrast-controls">
@@ -181,34 +296,49 @@
         </div>
       </div>
     </footer>
-    
+
     <script>
       // List of all available patterns
       const patterns = [
-        'dots', 'diagonalLines', 'crosshatch', 'zigzag', 'honeycomb', 
-        'bricks', 'horizontalLines', 'verticalLines', 'grid', 
-        'triangles', 'waves', 'circles'
+        "dots",
+        "diagonalLines",
+        "crosshatch",
+        "zigzag",
+        "honeycomb",
+        "bricks",
+        "horizontalLines",
+        "verticalLines",
+        "grid",
+        "triangles",
+        "waves",
+        "circles",
       ];
-      
+
       // Function to get a random element from an array
       function getRandomElement(array) {
         return array[Math.floor(Math.random() * array.length)];
       }
-      
+
       // Function to get three unique patterns
       function getThreeUniquePatterns() {
         const shuffled = [...patterns].sort(() => 0.5 - Math.random());
         return shuffled.slice(0, 3);
       }
-      
+
       // Function to apply random patterns on page load
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const selectedPatterns = getThreeUniquePatterns();
-        
+
         // Apply to logo parts
-        document.querySelector('.logo-blue').setAttribute('fill', `url(#${selectedPatterns[0]})`);
-        document.querySelector('.logo-pink').setAttribute('fill', `url(#${selectedPatterns[1]})`);
-        document.querySelector('.logo-yellow').setAttribute('fill', `url(#${selectedPatterns[2]})`);
+        document
+          .querySelector(".logo-blue")
+          .setAttribute("fill", `url(#${selectedPatterns[0]})`);
+        document
+          .querySelector(".logo-pink")
+          .setAttribute("fill", `url(#${selectedPatterns[1]})`);
+        document
+          .querySelector(".logo-yellow")
+          .setAttribute("fill", `url(#${selectedPatterns[2]})`);
       });
     </script>
   </body>

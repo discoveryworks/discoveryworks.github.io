@@ -160,9 +160,9 @@ body {
 
 .hero {
   /* Curvy, layered gradient background */
-  background: linear-gradient(135deg, var(--hero-gradient-start, var(--color-palette-pink)), var(--color-palette-blue)), radial-gradient(circle at 70% 30%, var(--color-palette-yellow) 0%, transparent 70%), radial-gradient(circle at 30% 70%, var(--color-palette-green) 0%, transparent 70%);
+  background: linear-gradient(135deg, var(--hero-gradient-start, var(--color-palette-pink)), var(--color-palette-blue)), radial-gradient(circle at 70% 30%, var(--color-palette-yellow) 0%, transparent 70%), radial-gradient(circle at 30% 70%, var(--color-palette-green) 0%, transparent 90%);
   background-size: 1200% 1200%;
-  animation: gradientMove 180s ease-in-out infinite;
+  animation: gradientMove 18s ease-in-out infinite;
   color: #fff;
   padding: calc(80px + var(--space-32)) 0 var(--space-32);
   text-align: left;
@@ -536,6 +536,28 @@ body {
 
 .hero--green {
   --hero-gradient-start: var(--color-palette-green);
+}
+
+h2.question, .question {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.4rem, 5vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.08;
+  margin-bottom: 0.1em;
+  margin-top: 0;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+h2.bad-answer, .bad-answer {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 4.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.08;
+  margin-top: 0;
+  margin-bottom: 2.2rem;
+  color: var(--color-dark);
+  letter-spacing: -0.01em;
 }
 
 /*# sourceMappingURL=main.css.map */
