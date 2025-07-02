@@ -556,7 +556,7 @@ body {
 .hero--green { --hero-gradient-start: var(--color-palette-green); }
 
 h2.question, .question {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.2rem);
   font-weight: 300;
   line-height: 1.08;
@@ -567,7 +567,7 @@ h2.question, .question {
 }
 
 h2.bad-answer, .bad-answer {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.2rem, 4.5vw, 2.8rem);
   font-weight: 300;
   line-height: 1.08;
