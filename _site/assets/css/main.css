@@ -159,9 +159,9 @@ body {
 }
 
 .hero {
-  background: linear-gradient(135deg, var(--hero-gradient-start, var(--color-palette-pink)), var(--color-palette-blue)), radial-gradient(circle at 70% 30%, var(--color-palette-yellow) 0%, transparent 70%), radial-gradient(circle at 30% 70%, var(--color-palette-green) 0%, transparent 70%);
+  background: linear-gradient(135deg, var(--hero-gradient-start, var(--color-palette-pink)) 0%, var(--color-palette-blue) 30%, var(--color-palette-yellow) 60%, var(--color-palette-green) 85%, var(--hero-gradient-start, var(--color-palette-pink)) 100%), radial-gradient(circle at 70% 30%, var(--color-palette-yellow) 0%, transparent 70%), radial-gradient(circle at 30% 70%, var(--color-palette-green) 0%, transparent 70%);
   background-size: 1200% 1200%;
-  animation: gradientMove 36s ease-in-out infinite;
+  animation: gradientMove 72s ease-in-out infinite;
   color: #fff;
   padding: calc(80px + var(--space-32)) 0 var(--space-32);
   text-align: left;
