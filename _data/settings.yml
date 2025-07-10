@@ -1,0 +1,159 @@
+# Kross Theme Settings for Discovery Works
+
+#-------------------------------
+# General Site Settings
+site_title: Discovery Works
+site_description: Discovery Works is a product development studio exploring how humans and computers work together.
+site_url: https://discovery.works
+
+#-------------------------------
+# General Settings
+title: Discovery Works
+logo: 
+email: hello@discovery.works
+phone: +1 (555) 123-4567
+address: Remote-First Studio
+copyright: Copyright &copy; 2025 Discovery Works designed by <a href="https://themefisher.com" target="_blank">Themefisher</a> & developed by <a href="https://getjekyllthemes.com" target="_blank">Getjekyllthemes</a>
+
+menu:
+- {name: About, link: '/about'}
+- {name: Blog, link: '/blog'}
+- {name: Portfolio, link: '/portfolio'}
+- {name: Contact, link: '/contact'}
+
+#-------------------------------
+# Google Analytics Section
+# google-analytics: UA-XXXXXXXXX-X
+
+#-------------------------------
+# Hero Section
+hero:
+  hero-title: Discovery Works
+  hero-subtitle: Product Development Studio
+  hero-description: We explore how humans and computers work together to build meaningful digital products.
+
+#-------------------------------
+# About (Section and Page)
+about:
+  enable: true
+  title: About Discovery Works
+  description: We are a product development studio exploring how humans and computers work together. Our approach combines thoughtful design, solid engineering, and deep user understanding.
+  content: |
+    Discovery Works operates three specialized labs, each focusing on different aspects of product development:
+    
+    **Vibe Coding Labs** develops tools and utilities that make development more enjoyable and productive.
+    
+    **Pizza Labs** explores experimental and playful approaches to digital products.
+    
+    **NeuroSpicy Labs** creates accessibility and productivity tools for diverse users.
+  button:
+    enable: true
+    label: "Know more"
+    URL: "about"
+
+#-------------------------------
+# Skills Section
+skills:
+  enable: true
+  title: "Skills"
+  skill-item:
+    - skill-name: "Product Strategy"
+      skill-per: "95%"
+    - skill-name: "User Experience Design"
+      skill-per: "90%"
+    - skill-name: "Full-Stack Development"
+      skill-per: "85%"
+    - skill-name: "System Architecture"
+      skill-per: "80%"
+
+#-------------------------------
+# Experience Section
+experience:
+  enable: true
+  title: "Experience"
+  experience-item:
+    - experience-title: "Product Development Studio"
+      experience-company: "Discovery Works"
+      experience-duration: "2024 - Present"
+      experience-description: "Leading product development across three specialized labs, focusing on developer tools, experimental products, and accessibility solutions."
+
+#-------------------------------
+# Education Section
+education:
+  enable: false
+
+#-------------------------------
+# Services Section
+services:
+  enable: true
+  title: "Our Labs"
+  service-item:
+    - service-name: "Vibe Coding Labs"
+      service-icon: "ti-world"
+      service-description: "Picks and shovels for vibe-coding. Developer tools and utilities that make coding more enjoyable."
+    - service-name: "Pizza Labs"
+      service-icon: "ti-palette"
+      service-description: "Experimental and playful digital products. Where we explore unconventional ideas."
+    - service-name: "NeuroSpicy Labs"
+      service-icon: "ti-vector"
+      service-description: "Accessibility and productivity tools designed for diverse minds and workflows."
+
+#-------------------------------
+# Portfolio Section
+portfolio:
+  enable: true
+  title: "Portfolio"
+  portfolio-item:
+    - portfolio-image: "assets/images/portfolio/item-1.png"
+      portfolio-title: "Phenotheme"
+      portfolio-description: "A dynamic color theming system for modern web applications."
+      portfolio-url: "https://github.com/discoveryworks/phenotheme"
+    - portfolio-image: "assets/images/portfolio/item-2.png"
+      portfolio-title: "ORKO"
+      portfolio-description: "Automated task orchestration and workflow management tool."
+      portfolio-url: "https://github.com/discoveryworks/orko"
+    - portfolio-image: "assets/images/portfolio/item-3.png"
+      portfolio-title: "scanventory"
+      portfolio-description: "Inventory management through document scanning and OCR."
+      portfolio-url: "https://github.com/discoveryworks/scanventory"
+    - portfolio-image: "assets/images/portfolio/item-4.png"
+      portfolio-title: "Pizza Pong"
+      portfolio-description: "Real-time multiplayer pong with pizza-powered powerups."
+      portfolio-url: "https://github.com/discoveryworks/pizza-pong"
+    - portfolio-image: "assets/images/portfolio/item-5.png"
+      portfolio-title: "yday"
+      portfolio-description: "Yesterday's focus tracker for mindful productivity habits."
+      portfolio-url: "https://github.com/discoveryworks/yday"
+    - portfolio-image: "assets/images/portfolio/item-6.png"
+      portfolio-title: "gday"
+      portfolio-description: "Good day greeting and daily intention setting tool."
+      portfolio-url: "https://github.com/discoveryworks/gday"
+
+#-------------------------------
+# Testimonials Section
+testimonials:
+  enable: false
+
+#-------------------------------
+# Client Slider Section
+clients-slider:
+  enable: false
+
+#-------------------------------
+# Contact Section
+contact:
+  enable: true
+  title: "Contact Us"
+  contact-description: "Ready to start your next project? Get in touch with Discovery Works."
+  
+#-------------------------------
+# Contact form settings
+contact-form:
+  enable: true
+  form-action: "https://formspree.io/f/your-form-id" # Add your formspree form ID
+  form-title: "Say Hello!"
+
+#-------------------------------
+# Google Map Section
+# google-map:
+#   enable: false

@@ -4,8 +4,17 @@ description: Discovery Works is a product development studio exploring how human
 baseurl: ""
 url: "https://discovery.works"
 
-# Theme configuration
-theme: minima  # Built-in Jekyll theme for now
+# Theme configuration - Jekyll remote themes
+current_theme: minimal-mistakes  # Options: 'kross', 'minimal-mistakes', 'vonge'
+
+# Remote theme configurations
+remote_themes:
+  kross: "themefisher/kross-jekyll"
+  minimal-mistakes: "mmistakes/minimal-mistakes"
+  vonge: "CloudCannon/vonge-jekyll-bookshop-template"
+
+# Set the active remote theme
+remote_theme: "themefisher/kross-jekyll"
 
 # Build settings
 markdown: kramdown
@@ -28,6 +37,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-remote-theme
 
 # Exclude from processing
 exclude:

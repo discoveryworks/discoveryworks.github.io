@@ -1,5 +1,5 @@
 {
-  "workbench.colorCustomizations": {
+  // "workbench.colorCustomizations": {
     "editor.background": "#f1f2ed",
     "editor.lineHighlightBackground": "#e7eae1",
     "editorGutter.background": "#f1f2ed",
