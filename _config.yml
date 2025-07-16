@@ -15,13 +15,17 @@ collections:
     output: true
     permalink: /:collection/:name/
   projects:
-    output: false
+    output: true
+    permalink: /:collection/:name/
 
 # Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+
+# Plugin configuration
+plugins_dir: _plugins
 
 # Exclude from processing
 exclude:
