@@ -1,15 +1,15 @@
 ---
-layout: default
-title: "Welcome to Discovery Works"
+layout: post
+title: "HELLO WORLD"
 date: 2025-01-01
 categories: [announcement]
 ---
 
-# Welcome to Discovery Works
+# HELLO WORLD!
 
-We're a product development studio exploring how humans and computers work together. This blog will share our thoughts on design, development, and digital products.
+Discovery Works is a product development studio exploring how humans and computers work together. This blog is a blog.
 
-Stay tuned for insights from our various labs:
-- **Vibe Coding Labs** - Development tools and utilities
-- **Pizza Labs** - Fun experimental projects  
-- **NeuroSpicy Labs** - Accessibility and productivity tools
+We're currently working on:
+- **Vibe Coding Labs** - Picks and shovels for the vibe-coding frontier.
+- **NeuroSpicy Labs** - Tools for people like us.
+- **Pizza Labs** - Have fun. Don't overthink it.
