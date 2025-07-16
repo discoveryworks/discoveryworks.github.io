@@ -6,9 +6,14 @@ layout: default
   <div class="container">
     <div class="section__content">
       <p class="section__intro">{{ site.data.labs[page.lab].title | upcase }}</p>
-      <h1 class="section__title">{{ page.title }}</h1>
-      {% if page.description %}
-        <p class="section__text">{{ page.description }}</p>
+      {% if page.status == 'stealth' %}
+        <h1 class="section__title">Stealth Project: {{ page.title | stealth_hash }}</h1>
+        <p class="section__text">█████████ ████████████ ███████</p>
+      {% else %}
+        <h1 class="section__title">{{ page.title }}</h1>
+        {% if page.description %}
+          <p class="section__text">{{ page.description }}</p>
+        {% endif %}
       {% endif %}
     </div>
   </div>
@@ -18,7 +23,11 @@ layout: default
   <div class="container">
     <div class="section__content">
       <div class="project-content">
-        {{ content }}
+        {% if page.status == 'stealth' %}
+          <p>█████████ ████████████ ███████</p>
+        {% else %}
+          {{ content }}
+        {% endif %}
       </div>
       
       <div class="project-meta">
@@ -29,23 +38,25 @@ layout: default
         </div>
         
         <div class="project-links">
-          {% if page.url %}
-            <a href="{{ page.url }}" target="_blank" class="project-link project-link--primary">
-              {% if page.url contains 'github' %}
-                View on GitHub
-              {% elsif page.url contains 'marketplace' %}
-                View on Marketplace
-              {% else %}
-                View Project
-              {% endif %}
-            </a>
-          {% endif %}
-          
-          {% if page.repo and page.repo != page.url %}
-            <a href="{{ page.repo }}" target="_blank" class="project-link project-link--secondary">
-              View Source
-            </a>
-          {% endif %}
+          {% unless page.status == 'stealth' %}
+            {% if page.url %}
+              <a href="{{ page.url }}" target="_blank" class="project-link project-link--primary">
+                {% if page.url contains 'github' %}
+                  View on GitHub
+                {% elsif page.url contains 'marketplace' %}
+                  View on Marketplace
+                {% else %}
+                  View Project
+                {% endif %}
+              </a>
+            {% endif %}
+            
+            {% if page.repo and page.repo != page.url %}
+              <a href="{{ page.repo }}" target="_blank" class="project-link project-link--secondary">
+                View Source
+              </a>
+            {% endif %}
+          {% endunless %}
         </div>
       </div>
     </div>

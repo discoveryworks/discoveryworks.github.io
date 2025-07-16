@@ -64,7 +64,7 @@ description: Straightforward, honest, financial advice. We are a financial advis
             {% for project in lab_projects %}
               <li>
                 {% if project.status == 'stealth' %}
-                  <a href="#" class="project-status-stealth">
+                  <a href="/projects/{{ project.title | stealth_hash }}/" class="project-status-stealth">
                     <div class="project-title">Stealth Project: {{ project.title | stealth_hash }}</div>
                     <div class="project-description">█████████ ████████████ ███████</div>
                   </a>
