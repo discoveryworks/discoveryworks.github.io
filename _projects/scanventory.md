@@ -8,4 +8,4 @@ order: 5
 status: "development"
 ---
 
-Photograph box contents. Sharpie a 4-char code on the box. Repeat. indexed and searchable.
+Photograph box contents. Sharpie a 4-char code on the box. Repeat. Indexed and searchable.
