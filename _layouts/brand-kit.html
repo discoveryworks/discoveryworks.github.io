@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ page.description }}">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Major+Mono+Display&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include header.html %}
+    
+    <main class="brand-kit-page">
+        <section class="section">
+            <div class="container">
+                <div class="section__content">
+                    <p class="section__intro">RESOURCES</p>
+                    <h1 class="section__title">{{ page.title }}</h1>
+                    <p class="section__text">{{ page.description }}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="container">
+                <div class="section__content brand-kit-content">
+                    {{ content }}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>
