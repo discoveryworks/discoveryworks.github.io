@@ -1,0 +1,39 @@
+---
+description: Guidelines for Tailwind CSS and DaisyUI-inspired components
+globs: "app/views/**/*.{erb,html,haml}"
+alwaysApply: false
+---
+# Tailwind CSS and Component Guidelines
+
+## General Principles
+- Follow a mobile-first approach in all UI development
+- Maintain consistent spacing and typography using Tailwind's scale
+- Use semantic color names in custom variables (not arbitrary hex values)
+- Extract common patterns into reusable components
+- Avoid inline styles - use Tailwind classes exclusively
+
+## Component Organization
+- Create custom Tailwind components for repeated UI patterns
+- Follow DaisyUI-inspired component design for consistency
+- Use view partials for complex reusable UI sections
+- Store shared UI components in `app/views/components/` directory
+- Document component usage with comments for team reference
+
+## Responsive Design
+- Start with mobile layouts and progressively enhance for larger screens
+- Use Tailwind's responsive prefixes consistently (sm:, md:, lg:, xl:)
+- Test interfaces at all breakpoints regularly
+- Ensure sufficient contrast ratios for accessibility
+- Maintain touch-friendly sizing (minimum 44px height/width for interactive elements)
+
+## Component Styling Patterns
+- Buttons: Use consistent classes for primary/secondary/tertiary actions
+- Forms: Maintain uniform input styling and error states
+- Cards: Consistent padding, shadows, and rounded corners
+- Navigation: Clear visual hierarchy and active states
+- Lists: Uniform spacing and dividers
+
+## Dark Mode (Future)
+- Use Tailwind's dark mode variant when implementing dark mode
+- Test color contrast in both light and dark themes
+- Avoid hard-coded colors that don't respect theme preferences
