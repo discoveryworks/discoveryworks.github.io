@@ -120,9 +120,15 @@ class ReadmeSync
     why_end = nil
     
     lines.each_with_index do |line, index|
-      if line.match(/^##\s+Why/i)
+      # Match various "Why" header formats:
+      # - ## Why
+      # - ⛵️ Why use Port of Call?
+      # - # Why we built this
+      # etc.
+      if line.match(/^(#+ |.*\s+)*Why\b/i)
         why_start = index
-      elsif why_start && line.match(/^##\s+/)
+      elsif why_start && line.match(/^(#+\s+|\S+\s+[^\s]+.*\s+[^\s]+.*\?)/) && !line.match(/Why/i) && !line.match(/^=+$/)
+        # Stop at next header (but not decoration lines like ===)
         why_end = index
         break
       end

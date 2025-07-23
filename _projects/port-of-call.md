@@ -1,13 +1,25 @@
 ---
 layout: project
-title: "Port of call"
-description: "Deterministic non-standard port number assignment for when you're developing too many apps at once."
-lab: "vibe-coding"
-url: "https://rubygems.org/gems/port_of_call"
-repo: "https://github.com/jonathanpberger/port-of-call"
+title: Port of call
+description: Deterministic non-standard port number assignment for when you're developing
+  too many apps at once.
+lab: vibe-coding
+url: https://rubygems.org/gems/port_of_call
+repo: https://github.com/jonathanpberger/port-of-call
 order: 2
-status: "active"
+status: active
 ---
+
+Deterministic non-standard port number assignment for when you're developing too many apps at once.
+
+Deterministic non-standard port number assignment for when you're developing too many apps at once.
+
+Deterministic non-standard port number assignment for when you're developing too many apps at once.
+
+<!-- START AUTO-GENERATED WHY (2025-07-23 14:43:33) -->
+⛵️ Why use Port of Call?
+=============================
+<!-- END AUTO-GENERATED WHY -->
 
 Deterministic non-standard port number assignment for when you're developing too many apps at once.
 
