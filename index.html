@@ -41,7 +41,7 @@ description: Straightforward, honest, financial advice. We are a financial advis
   </div>
 </section>
 
-{% assign lab_order = 'vibe-coding,pizza,neurospicy,unfussy' | split: ',' %}
+{% assign lab_order = 'vibecoding-ergonomics,pizza,neurospicy,unfussy' | split: ',' %}
 
 {% for lab_key in lab_order %}
   {% assign lab_projects = site.projects | where: 'lab', lab_key | sort: 'order' %}

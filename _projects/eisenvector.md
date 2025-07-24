@@ -3,9 +3,9 @@ layout: project
 title: "Eisenvector"
 description: "Priority matrix tool for ADHD-friendly task management."
 lab: "neurospicy"
-url: "https://github.com/discoveryworks/eisenvector"
-order: 6
+repo: "https://github.com/discoveryworks/eisenvector7-ror"
 status: "development"
+order: 9
 ---
 
 Priority matrix tool for ADHD-friendly task management.

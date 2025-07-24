@@ -2,7 +2,7 @@
 layout: project
 title: "Phenotheme"
 description: "Deterministic non-standard IDE theming for when you're developing too many apps at once."
-lab: "vibe-coding"
+lab: "vibecoding-ergonomics"
 url: "https://marketplace.visualstudio.com/items?itemName=DiscoveryWorks.phenotheme"
 repo: "https://github.com/discoveryworks/phenotheme"
 order: 1

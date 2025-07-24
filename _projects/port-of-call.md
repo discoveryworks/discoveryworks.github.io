@@ -3,7 +3,7 @@ layout: project
 title: Port of call
 description: Deterministic non-standard port number assignment for when you're developing
   too many apps at once.
-lab: vibe-coding
+lab: vibecoding-ergonomics
 url: https://rubygems.org/gems/port_of_call
 repo: https://github.com/jonathanpberger/port-of-call
 order: 2
