@@ -115,6 +115,8 @@ class ReadmeSync
   end
 
   def extract_why_section(readme_content)
+    # Ensure UTF-8 encoding
+    readme_content = readme_content.force_encoding('UTF-8')
     lines = readme_content.split("\n")
     why_start = nil
     why_end = nil
@@ -127,7 +129,7 @@ class ReadmeSync
       # etc.
       if line.match(/^(#+ |.*\s+)*Why\b/i)
         why_start = index
-      elsif why_start && line.match(/^(#+\s+|\S+\s+[^\s]+.*\s+[^\s]+.*\?)/) && !line.match(/Why/i) && !line.match(/^=+$/)
+      elsif why_start && (line.match(/^#+\s+/) || line.match(/^[⛵️🚢🏴‍☠️]+\s+/)) && !line.match(/Why/i)
         # Stop at next header (but not decoration lines like ===)
         why_end = index
         break
@@ -136,7 +138,14 @@ class ReadmeSync
     
     if why_start
       why_end ||= lines.length
-      why_lines = lines[why_start...why_end]
+      # Skip the "Why" header line
+      content_start = why_start + 1
+      # Skip decoration lines if present (but only if immediately after header)
+      if content_start < why_end && lines[content_start].match(/^[=\-]+$/)
+        content_start += 1
+      end
+      # Return only the content, not the header
+      why_lines = lines[content_start...why_end]
       return why_lines.join("\n").strip
     end
     
