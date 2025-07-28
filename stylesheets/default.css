@@ -366,3 +366,58 @@ main {
     }
   }
 }
+
+/* Installation Notice Styles */
+.installation-notice {
+  position: relative;
+  margin: 1.5rem 0;
+  background-color: #f6f8fa;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.installation-notice__command {
+  display: block;
+  margin: 0;
+  padding: 16px;
+  padding-right: 60px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #24292e;
+  background-color: transparent;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.installation-notice__copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #586069;
+  background-color: #f6f8fa;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.installation-notice__copy:hover {
+  color: #24292e;
+  background-color: #f3f4f6;
+  border-color: #c9d1d9;
+}
+
+.installation-notice__copy:active {
+  background-color: #ebecf0;
+}
+
+.installation-notice__copy--copied {
+  color: #28a745;
+  border-color: #28a745;
+}

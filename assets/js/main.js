@@ -48,3 +48,23 @@ document.addEventListener('DOMContentLoaded', function() {
     hero.classList.add(randomClass);
   }
 });
+
+// Copy installation command to clipboard
+function copyInstallCommand(button, command) {
+  navigator.clipboard.writeText(command).then(function() {
+    // Store original text
+    const originalText = button.textContent;
+    
+    // Change button text and style
+    button.textContent = 'Copied!';
+    button.classList.add('installation-notice__copy--copied');
+    
+    // Reset after 2 seconds
+    setTimeout(function() {
+      button.textContent = originalText;
+      button.classList.remove('installation-notice__copy--copied');
+    }, 2000);
+  }).catch(function(err) {
+    console.error('Failed to copy text: ', err);
+  });
+}
