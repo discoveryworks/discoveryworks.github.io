@@ -40,6 +40,8 @@ exclude:
 
 # Site navigation
 nav_links:
+  - title: Projects
+    url: /projects/
   # - title: Services
   #   url: /services/
   # - title: About

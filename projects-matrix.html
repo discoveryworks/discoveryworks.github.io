@@ -1,0 +1,291 @@
+---
+layout: default
+title: Projects Matrix
+permalink: /projects-matrix/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section__content">
+      <h1 class="section__title">Projects Matrix</h1>
+      <p class="section__text">Complete frontmatter data for all projects</p>
+      
+      <div class="matrix-controls">
+        <button onclick="toggleCompact()" class="matrix-button">Toggle Compact View</button>
+        <button onclick="exportToCSV()" class="matrix-button">Export CSV</button>
+      </div>
+      
+      <div class="matrix-wrapper">
+        <table id="projects-matrix" class="projects-matrix">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Layout</th>
+              <th>Lab</th>
+              <th>Status</th>
+              <th>Order</th>
+              <th>Description</th>
+              <th>URL</th>
+              <th>Repo</th>
+              <th>Installation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% assign sorted_projects = site.projects | sort: 'order' %}
+            {% for project in sorted_projects %}
+            <tr data-project="{{ project.title | slugify }}">
+              <td class="title-cell">
+                <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+              </td>
+              <td>{{ project.layout }}</td>
+              <td>
+                {% if project.lab %}
+                  <span title="{{ site.data.labs[project.lab].title }}">{{ project.lab }}</span>
+                {% else %}
+                  <span class="empty">-</span>
+                {% endif %}
+              </td>
+              <td>
+                <span class="status-badge status-badge--{{ project.status | default: 'active' }}">
+                  {{ project.status | default: 'active' }}
+                </span>
+              </td>
+              <td class="numeric">{{ project.order | default: '999' }}</td>
+              <td class="description-cell">
+                {% if project.status == 'stealth' %}
+                  <span class="stealth">█████████</span>
+                {% else %}
+                  <span title="{{ project.description }}">{{ project.description | truncate: 60 }}</span>
+                {% endif %}
+              </td>
+              <td class="url-cell">
+                {% if project.url and project.url != '' %}
+                  <a href="{{ project.url }}" target="_blank" title="{{ project.url }}">
+                    {{ project.url | remove: 'https://' | remove: 'http://' | truncate: 30 }}
+                  </a>
+                {% else %}
+                  <span class="empty">-</span>
+                {% endif %}
+              </td>
+              <td class="repo-cell">
+                {% if project.repo and project.repo != '' %}
+                  <a href="{{ project.repo }}" target="_blank" title="{{ project.repo }}">
+                    {{ project.repo | remove: 'https://github.com/' | truncate: 30 }}
+                  </a>
+                {% else %}
+                  <span class="empty">-</span>
+                {% endif %}
+              </td>
+              <td class="installation-cell">
+                {% if project.installation_instructions %}
+                  <code title="{{ project.installation_instructions }}">{{ project.installation_instructions | truncate: 40 }}</code>
+                {% else %}
+                  <span class="empty">-</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="matrix-stats">
+        <p>Total projects: {{ site.projects.size }}</p>
+        <p>Active: {{ site.projects | where: 'status', 'active' | size }}</p>
+        <p>Stealth: {{ site.projects | where: 'status', 'stealth' | size }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.matrix-controls {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.matrix-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.matrix-button:hover {
+  opacity: 0.9;
+}
+
+.matrix-wrapper {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.projects-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.projects-matrix th,
+.projects-matrix td {
+  padding: 0.5rem;
+  text-align: left;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.projects-matrix th:last-child,
+.projects-matrix td:last-child {
+  border-right: none;
+}
+
+.projects-matrix th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.projects-matrix tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+.projects-matrix a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+.projects-matrix a:hover {
+  text-decoration: underline;
+}
+
+.title-cell {
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.numeric {
+  text-align: center;
+}
+
+.empty {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.stealth {
+  color: #6b7280;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.status-badge--active {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge--stealth {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.description-cell,
+.url-cell,
+.repo-cell,
+.installation-cell {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.installation-cell code {
+  background-color: #f6f8fa;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.matrix-stats {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+.matrix-stats p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+/* Compact mode */
+.projects-matrix.compact {
+  font-size: 0.75rem;
+}
+
+.projects-matrix.compact th,
+.projects-matrix.compact td {
+  padding: 0.25rem;
+}
+
+.projects-matrix.compact .description-cell,
+.projects-matrix.compact .url-cell,
+.projects-matrix.compact .repo-cell,
+.projects-matrix.compact .installation-cell {
+  max-width: 150px;
+}
+</style>
+
+<script>
+function toggleCompact() {
+  const matrix = document.getElementById('projects-matrix');
+  matrix.classList.toggle('compact');
+}
+
+function exportToCSV() {
+  const table = document.getElementById('projects-matrix');
+  const rows = table.querySelectorAll('tr');
+  let csv = [];
+  
+  // Headers
+  const headers = Array.from(rows[0].querySelectorAll('th')).map(th => th.textContent);
+  csv.push(headers.join(','));
+  
+  // Data rows
+  for (let i = 1; i < rows.length; i++) {
+    const cells = rows[i].querySelectorAll('td');
+    const row = Array.from(cells).map(td => {
+      let text = td.textContent.trim();
+      // Escape quotes and wrap in quotes if contains comma
+      if (text.includes(',') || text.includes('"')) {
+        text = '"' + text.replace(/"/g, '""') + '"';
+      }
+      return text;
+    });
+    csv.push(row.join(','));
+  }
+  
+  // Download
+  const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'discovery-works-projects.csv';
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+</script>

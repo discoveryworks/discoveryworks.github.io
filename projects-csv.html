@@ -1,0 +1,149 @@
+---
+layout: default
+title: Projects CSV Export
+permalink: /projects-csv/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section__content">
+      <h1 class="section__title">Projects CSV Export</h1>
+      <p class="section__text">Copy and paste into your favorite spreadsheet application</p>
+      
+      <div class="csv-controls">
+        <button onclick="selectAll()" class="csv-button">Select All</button>
+        <button onclick="copyToClipboard()" class="csv-button">Copy to Clipboard</button>
+        <button onclick="downloadCSV()" class="csv-button">Download CSV</button>
+      </div>
+      
+      <div class="csv-container">
+        <textarea id="csvOutput" class="csv-output" readonly>file,title,layout,lab,status,order,description,url,repo,installation_instructions
+{% assign sorted_projects = site.projects | sort: 'order' %}{% for project in sorted_projects %}{{ project.path | remove: '_projects/' }},{{ project.title | replace: ',', '&#44;' }},{{ project.layout }},{{ project.lab }},{{ project.status }},{{ project.order | default: 999 }},"{{ project.description | replace: '"', '""' }}",{{ project.url | default: '' }},{{ project.repo | default: '' }},{{ project.installation_instructions | default: '' }}
+{% endfor %}</textarea>
+      </div>
+      
+      <div class="csv-info">
+        <h3>How to use:</h3>
+        <ol>
+          <li>Click "Select All" or manually select the text above</li>
+          <li>Copy (Ctrl+C or Cmd+C)</li>
+          <li>Open your spreadsheet application (Excel, Google Sheets, etc.)</li>
+          <li>Paste (Ctrl+V or Cmd+V)</li>
+          <li>Use "Data > Text to Columns" if needed</li>
+        </ol>
+        
+        <h3>All fields included:</h3>
+        <ul>
+          <li><strong>file</strong> - Filename in _projects directory</li>
+          <li><strong>title</strong> - Project title</li>
+          <li><strong>layout</strong> - Jekyll layout (always "project")</li>
+          <li><strong>lab</strong> - Lab affiliation</li>
+          <li><strong>status</strong> - Project status (development/active/stealth/archived)</li>
+          <li><strong>order</strong> - Display order</li>
+          <li><strong>description</strong> - Project description</li>
+          <li><strong>url</strong> - External project URL</li>
+          <li><strong>repo</strong> - Repository URL</li>
+          <li><strong>installation_instructions</strong> - How to install/use</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.csv-controls {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.csv-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.csv-button:hover {
+  opacity: 0.9;
+}
+
+.csv-container {
+  margin: 2rem 0;
+}
+
+.csv-output {
+  width: 100%;
+  min-height: 400px;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  resize: vertical;
+}
+
+.csv-output:focus {
+  outline: none;
+  border-color: var(--color-blue);
+}
+
+.csv-info {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+.csv-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.csv-info ol,
+.csv-info ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.csv-info li {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+</style>
+
+<script>
+function selectAll() {
+  const textarea = document.getElementById('csvOutput');
+  textarea.select();
+  textarea.setSelectionRange(0, 99999); // For mobile
+}
+
+function copyToClipboard() {
+  const textarea = document.getElementById('csvOutput');
+  textarea.select();
+  textarea.setSelectionRange(0, 99999); // For mobile
+  
+  try {
+    document.execCommand('copy');
+    alert('CSV copied to clipboard!');
+  } catch (err) {
+    alert('Failed to copy. Please select and copy manually.');
+  }
+}
+
+function downloadCSV() {
+  const content = document.getElementById('csvOutput').value;
+  const blob = new Blob([content], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'discovery-works-projects.csv';
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+</script>

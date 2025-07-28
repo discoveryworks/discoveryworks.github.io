@@ -1,0 +1,186 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section__content">
+      <h1 class="section__title">All Projects</h1>
+      <p class="section__text">Exploring how humans and computers work together</p>
+      
+      <div class="sort-controls">
+        <span class="sort-label">Sort by:</span>
+        <button class="sort-button sort-button--active" data-sort="default">Default</button>
+        <button class="sort-button" data-sort="name">Name</button>
+        <button class="sort-button" data-sort="lab">Lab</button>
+        <button class="sort-button" data-sort="status">Status</button>
+      </div>
+      
+      <ul class="lab-list" id="projectsList">
+        {% assign sorted_projects = site.projects | sort: 'order' %}
+        {% for project in sorted_projects %}
+          <li data-name="{{ project.title }}" 
+              data-lab="{{ project.lab }}" 
+              data-status="{{ project.status | default: 'active' }}"
+              data-order="{{ project.order | default: 999 }}">
+            {% include project-card.html project=project show_meta=true show_install=true %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: var(--color-background-light);
+  border-radius: var(--border-radius);
+}
+
+.sort-label {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+}
+
+.sort-button {
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sort-button:hover {
+  background-color: var(--color-palette-yellow);
+  border-color: var(--color-palette-yellow);
+  color: var(--color-dark);
+}
+
+.sort-button--active {
+  background-color: var(--color-dark);
+  color: white;
+  border-color: var(--color-dark);
+}
+
+.sort-button--active:hover {
+  background-color: var(--color-dark);
+}
+
+/* Project metadata within tiles */
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+}
+
+.project-lab {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: inherit;
+}
+
+.project-status {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: inherit;
+}
+
+.project-install {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius);
+}
+
+.project-install code {
+  font-size: var(--font-size-sm);
+  color: inherit;
+  opacity: 0.9;
+}
+
+/* Override some lab-list styles for better hierarchy */
+.lab-list .project-title {
+  margin-bottom: 0.75rem;
+}
+
+/* Ensure project cards have enough padding at bottom for GitHub icon */
+.lab-list .project-card-link {
+  padding-bottom: calc(var(--space-6) + 44px + var(--space-4)); /* Extra space for GitHub button */
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .sort-controls {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .sort-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sortButtons = document.querySelectorAll('.sort-button');
+  const projectsList = document.getElementById('projectsList');
+  const projects = Array.from(projectsList.children);
+  
+  sortButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Update active button
+      sortButtons.forEach(btn => btn.classList.remove('sort-button--active'));
+      this.classList.add('sort-button--active');
+      
+      // Sort projects
+      const sortType = this.dataset.sort;
+      let sorted;
+      
+      switch(sortType) {
+        case 'name':
+          sorted = projects.sort((a, b) => 
+            a.dataset.name.toLowerCase().localeCompare(b.dataset.name.toLowerCase())
+          );
+          break;
+        case 'lab':
+          sorted = projects.sort((a, b) => 
+            a.dataset.lab.localeCompare(b.dataset.lab)
+          );
+          break;
+        case 'status':
+          sorted = projects.sort((a, b) => {
+            const statusOrder = { 'active': 1, 'development': 2, 'stealth': 3, 'archived': 4 };
+            return statusOrder[a.dataset.status] - statusOrder[b.dataset.status];
+          });
+          break;
+        default: // 'default' - sort by order
+          sorted = projects.sort((a, b) => 
+            parseInt(a.dataset.order) - parseInt(b.dataset.order)
+          );
+      }
+      
+      // Re-append sorted projects
+      projectsList.innerHTML = '';
+      sorted.forEach(project => projectsList.appendChild(project));
+    });
+  });
+});
+</script>

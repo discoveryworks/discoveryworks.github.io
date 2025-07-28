@@ -1,0 +1,463 @@
+---
+layout: default
+title: Projects Editor
+permalink: /projects-editor/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section__content">
+      <h1 class="section__title">Projects Editor</h1>
+      <p class="section__text">Edit all project frontmatter fields</p>
+      
+      <div class="editor-controls">
+        <button onclick="exportToCSV()" class="editor-button">Export to CSV</button>
+        <button onclick="document.getElementById('csvImport').click()" class="editor-button">Import CSV</button>
+        <input type="file" id="csvImport" accept=".csv" style="display: none;" onchange="importCSV(event)">
+        <button onclick="saveChanges()" class="editor-button editor-button--primary">Save All Changes</button>
+        <span id="saveStatus" class="save-status"></span>
+      </div>
+      
+      <div class="editor-wrapper">
+        <table id="projects-editor" class="projects-editor">
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Title</th>
+              <th>Layout</th>
+              <th>Lab</th>
+              <th>Status</th>
+              <th>Order</th>
+              <th>Description</th>
+              <th>URL</th>
+              <th>Repo</th>
+              <th>Installation Instructions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% assign sorted_projects = site.projects | sort: 'order' %}
+            {% for project in sorted_projects %}
+            <tr data-file="{{ project.path | remove: '_projects/' }}">
+              <td class="file-cell">{{ project.path | remove: '_projects/' }}</td>
+              <td><input type="text" name="title" value="{{ project.title }}" class="field-input"></td>
+              <td><input type="text" name="layout" value="{{ project.layout }}" class="field-input" readonly></td>
+              <td>
+                <select name="lab" class="field-select">
+                  {% for lab in site.data.labs %}
+                    <option value="{{ lab[0] }}" {% if project.lab == lab[0] %}selected{% endif %}>
+                      {{ lab[1].title }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </td>
+              <td>
+                <select name="status" class="field-select">
+                  <option value="development" {% if project.status == 'development' %}selected{% endif %}>Development</option>
+                  <option value="active" {% if project.status == 'active' %}selected{% endif %}>Active</option>
+                  <option value="stealth" {% if project.status == 'stealth' %}selected{% endif %}>Stealth</option>
+                  <option value="archived" {% if project.status == 'archived' %}selected{% endif %}>Archived</option>
+                </select>
+              </td>
+              <td><input type="number" name="order" value="{{ project.order | default: 999 }}" class="field-input field-input--number"></td>
+              <td><textarea name="description" class="field-textarea">{{ project.description }}</textarea></td>
+              <td><input type="url" name="url" value="{{ project.url }}" class="field-input"></td>
+              <td><input type="url" name="repo" value="{{ project.repo }}" class="field-input"></td>
+              <td><input type="text" name="installation_instructions" value="{{ project.installation_instructions }}" class="field-input"></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="editor-info">
+        <h3>Instructions:</h3>
+        <ul>
+          <li>Edit fields directly in the table</li>
+          <li>Changes are highlighted in yellow</li>
+          <li>Click "Save All Changes" to generate a script to update files</li>
+          <li>Export to CSV for external editing</li>
+          <li>Import CSV to bulk update (must have same column structure)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.editor-controls {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.editor-button {
+  padding: 0.5rem 1rem;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.editor-button:hover {
+  background-color: #4b5563;
+}
+
+.editor-button--primary {
+  background-color: var(--color-green);
+  color: #1f2937;
+}
+
+.editor-button--primary:hover {
+  opacity: 0.9;
+}
+
+.save-status {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+}
+
+.save-status--success {
+  color: #059669;
+}
+
+.save-status--error {
+  color: #dc2626;
+}
+
+.editor-wrapper {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.projects-editor {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.projects-editor th,
+.projects-editor td {
+  padding: 0.5rem;
+  text-align: left;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.projects-editor th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.file-cell {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.field-input,
+.field-select,
+.field-textarea {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: inherit;
+}
+
+.field-input:focus,
+.field-select:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 3px rgba(82, 167, 220, 0.1);
+}
+
+.field-input--number {
+  width: 60px;
+}
+
+.field-textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.field-input[readonly] {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+/* Change tracking */
+.field-changed {
+  background-color: #fef3c7 !important;
+}
+
+.editor-info {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+.editor-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.editor-info ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.editor-info li {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+/* Output modal */
+.output-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.output-modal-content {
+  position: relative;
+  background-color: white;
+  margin: 5% auto;
+  padding: 2rem;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 8px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.output-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.output-modal pre {
+  background-color: #f6f8fa;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+</style>
+
+<div id="outputModal" class="output-modal" onclick="if(event.target === this) this.style.display='none'">
+  <div class="output-modal-content">
+    <span class="output-modal-close" onclick="document.getElementById('outputModal').style.display='none'">&times;</span>
+    <h2>Update Script</h2>
+    <p>Copy and run this Ruby script to update your project files:</p>
+    <pre id="outputScript"></pre>
+  </div>
+</div>
+
+<script>
+// Track original values
+const originalValues = {};
+document.querySelectorAll('#projects-editor tbody tr').forEach(row => {
+  const file = row.dataset.file;
+  originalValues[file] = {};
+  row.querySelectorAll('input, select, textarea').forEach(input => {
+    originalValues[file][input.name] = input.value;
+  });
+});
+
+// Track changes
+document.querySelectorAll('#projects-editor input, #projects-editor select, #projects-editor textarea').forEach(input => {
+  input.addEventListener('change', function() {
+    const row = this.closest('tr');
+    const file = row.dataset.file;
+    const field = this.name;
+    
+    if (this.value !== originalValues[file][field]) {
+      this.classList.add('field-changed');
+    } else {
+      this.classList.remove('field-changed');
+    }
+  });
+});
+
+function exportToCSV() {
+  const table = document.getElementById('projects-editor');
+  const rows = table.querySelectorAll('tr');
+  let csv = [];
+  
+  // Headers
+  const headers = ['file', 'title', 'layout', 'lab', 'status', 'order', 'description', 'url', 'repo', 'installation_instructions'];
+  csv.push(headers.join(','));
+  
+  // Data rows
+  table.querySelectorAll('tbody tr').forEach(row => {
+    const data = [row.dataset.file];
+    row.querySelectorAll('input, select, textarea').forEach(input => {
+      let value = input.value;
+      // Escape quotes and wrap in quotes if contains comma or newline
+      if (value.includes(',') || value.includes('"') || value.includes('\n')) {
+        value = '"' + value.replace(/"/g, '""') + '"';
+      }
+      data.push(value);
+    });
+    csv.push(data.join(','));
+  });
+  
+  // Download
+  const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'discovery-works-projects-edit.csv';
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+
+function importCSV(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const csv = e.target.result;
+    const lines = csv.split('\n');
+    const headers = lines[0].split(',');
+    
+    // Skip header row and process data
+    for (let i = 1; i < lines.length; i++) {
+      if (!lines[i].trim()) continue;
+      
+      const values = parseCSVLine(lines[i]);
+      const filename = values[0];
+      
+      const row = document.querySelector(`tr[data-file="${filename}"]`);
+      if (!row) continue;
+      
+      // Update fields
+      const inputs = row.querySelectorAll('input, select, textarea');
+      inputs.forEach((input, index) => {
+        if (index < values.length - 1) { // -1 because file is not an input
+          input.value = values[index + 1];
+          input.dispatchEvent(new Event('change'));
+        }
+      });
+    }
+    
+    document.getElementById('saveStatus').textContent = 'CSV imported successfully';
+    document.getElementById('saveStatus').className = 'save-status save-status--success';
+  };
+  
+  reader.readAsText(file);
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  
+  for (let i = 0; i < line.length; i++) {
+    const char = line[i];
+    const nextChar = line[i + 1];
+    
+    if (char === '"' && inQuotes && nextChar === '"') {
+      current += '"';
+      i++;
+    } else if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      result.push(current);
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+  
+  result.push(current);
+  return result;
+}
+
+function saveChanges() {
+  const changes = {};
+  
+  document.querySelectorAll('#projects-editor tbody tr').forEach(row => {
+    const file = row.dataset.file;
+    const fileChanges = {};
+    
+    row.querySelectorAll('input.field-changed, select.field-changed, textarea.field-changed').forEach(input => {
+      fileChanges[input.name] = input.value;
+    });
+    
+    if (Object.keys(fileChanges).length > 0) {
+      changes[file] = fileChanges;
+    }
+  });
+  
+  if (Object.keys(changes).length === 0) {
+    document.getElementById('saveStatus').textContent = 'No changes to save';
+    document.getElementById('saveStatus').className = 'save-status';
+    return;
+  }
+  
+  // Generate Ruby script
+  let script = `#!/usr/bin/env ruby
+# Update script for Discovery Works projects
+# Generated on ${new Date().toLocaleString()}
+
+require 'yaml'
+
+changes = ${JSON.stringify(changes, null, 2).replace(/"([^"]+)":/g, '"$1" =>')}
+
+changes.each do |filename, updates|
+  filepath = "_projects/#{filename}"
+  
+  if File.exist?(filepath)
+    content = File.read(filepath)
+    
+    if content.start_with?("---")
+      parts = content.split("---", 3)
+      frontmatter = YAML.load(parts[1])
+      
+      updates.each do |key, value|
+        frontmatter[key] = value
+        frontmatter[key] = value.to_i if key == "order"
+      end
+      
+      new_content = "---\\n#{frontmatter.to_yaml.lines[1..-1].join}---#{parts[2]}"
+      
+      File.write(filepath, new_content)
+      puts "Updated #{filepath}"
+    end
+  else
+    puts "File not found: #{filepath}"
+  end
+end
+
+puts "\\nUpdate complete!"
+`;
+  
+  document.getElementById('outputScript').textContent = script;
+  document.getElementById('outputModal').style.display = 'block';
+  
+  document.getElementById('saveStatus').textContent = 'Script generated - see modal';
+  document.getElementById('saveStatus').className = 'save-status save-status--success';
+}
+</script>

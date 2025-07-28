@@ -1,0 +1,185 @@
+---
+layout: default
+title: Projects Table
+permalink: /projects-table/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section__content">
+      <h1 class="section__title">All Projects</h1>
+      <p class="section__text">Overview of all Discovery Works projects</p>
+      
+      <div class="table-wrapper">
+        <table class="projects-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Lab</th>
+              <th>Status</th>
+              <th>Description</th>
+              <th>Links</th>
+              <th>Installation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% assign sorted_projects = site.projects | sort: 'order' %}
+            {% for project in sorted_projects %}
+            <tr>
+              <td>
+                <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+              </td>
+              <td>
+                {% if project.lab %}
+                  {{ site.data.labs[project.lab].title }}
+                {% else %}
+                  -
+                {% endif %}
+              </td>
+              <td>
+                <span class="status-badge status-badge--{{ project.status | default: 'active' }}">
+                  {{ project.status | default: 'active' | capitalize }}
+                </span>
+              </td>
+              <td class="description-cell">
+                {% if project.status == 'stealth' %}
+                  █████████ ████████████
+                {% else %}
+                  {{ project.description | truncate: 100 }}
+                {% endif %}
+              </td>
+              <td>
+                {% unless project.status == 'stealth' %}
+                  {% if project.url and project.url != '' %}
+                    <a href="{{ project.url }}" target="_blank" class="link-icon" title="Project">🔗</a>
+                  {% endif %}
+                  {% if project.repo and project.repo != '' %}
+                    <a href="{{ project.repo }}" target="_blank" class="link-icon" title="Repository">📦</a>
+                  {% endif %}
+                {% endunless %}
+              </td>
+              <td class="installation-cell">
+                {% if project.installation_instructions %}
+                  <code class="installation-snippet">{{ project.installation_instructions | truncate: 50 }}</code>
+                {% else %}
+                  -
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.table-wrapper {
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.projects-table th,
+.projects-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.projects-table th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+  position: sticky;
+  top: 0;
+}
+
+.projects-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.projects-table a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+.projects-table a:hover {
+  text-decoration: underline;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.status-badge--active {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge--stealth {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.status-badge--archived {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.description-cell {
+  max-width: 300px;
+}
+
+.link-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  text-decoration: none;
+}
+
+.installation-cell {
+  max-width: 200px;
+}
+
+.installation-snippet {
+  background-color: #f6f8fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projects-table {
+    font-size: 0.8rem;
+  }
+  
+  .projects-table th,
+  .projects-table td {
+    padding: 0.5rem;
+  }
+  
+  .description-cell,
+  .installation-cell {
+    max-width: 150px;
+  }
+}
+</style>

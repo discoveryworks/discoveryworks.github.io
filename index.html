@@ -63,17 +63,7 @@ description: Straightforward, honest, financial advice. We are a financial advis
           <ul class="lab-list">
             {% for project in lab_projects %}
               <li>
-                {% if project.status == 'stealth' %}
-                  <a href="/projects/{{ project.title | stealth_hash }}/" class="project-status-stealth">
-                    <div class="project-title">Stealth Project: {{ project.title | stealth_hash }}</div>
-                    <div class="project-description">█████████ ████████████ ███████</div>
-                  </a>
-                {% else %}
-                  <a href="{{ project.url }}" class="project-status-{{ project.status | default: 'active' }}">
-                    <div class="project-title">{{ project.title }}</div>
-                    <div class="project-description">{{ project.description }}</div>
-                  </a>
-                {% endif %}
+                {% include project-card.html project=project show_meta=false show_install=false %}
               </li>
             {% endfor %}
           </ul>
