@@ -36,6 +36,11 @@
         &copy; {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.
         <span class="footer__separator">|</span>
         <a href="/brand-kit/" class="footer__link">Brand Kit</a>
+        <span class="footer__separator">|</span>
+        <span class="footer__build-info">
+          Published {{ site.time | date: "%b %d, %Y at %I:%M" }}{{ site.time | date: "%p" | downcase }}
+          {% if site.github.build_revision %} ({{ site.github.build_revision | slice: 0, 7 }}){% endif %}
+        </span>
       </p>
     </div>
   </div>
