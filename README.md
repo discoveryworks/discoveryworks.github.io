@@ -1,6 +1,6 @@
 # Discovery Works
 
-🌸 Why use Discovery Works?
+🌸 Why did we build this Discovery Works site?
 =============================
 We built this site to showcase our software labs and share our exploration of how humans and computers work together. It's a place to discover the tools and experiments we create.
 
