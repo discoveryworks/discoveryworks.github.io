@@ -4,13 +4,15 @@ title: "Privacy Policy - Pizza Pong"
 permalink: /privacy/
 ---
 
-# Privacy Policy
+# Pizza Pong Privacy Policy
 
 **Last updated: {{ site.time | date: "%B %d, %Y" }}**
 
 This Privacy Policy describes how Discovery Works ("we," "our," or "us") collects, uses, and shares your personal information when you use the Pizza Pong mobile application (the "App").
 
 ## Information We Collect
+
+We don't collect any information. This is an arcade game. If you can figure out how to shove quarters into your iPhone, give us a call.
 
 ### Information You Provide
 - **Game Progress**: We may store your game scores and progress locally on your device to enhance your gaming experience.
