@@ -3,7 +3,7 @@ layout: project
 title: "yday"
 description: "Git retrospective analysis tool - smart views of recent development work"
 lab: "neurospicy"
-url: "https://github.com/discoveryworks/yday"
+repo: "https://github.com/discoveryworks/yday"
 order: 2
 status: "active"
 ---
@@ -20,7 +20,7 @@ Git retrospective analysis tool that provides semantic summaries of recent devel
 - **Multi-repo analysis**: Gathers commits across multiple repositories in your workspace
 - **Semantic summaries**: Meaningful chunks of work across commits
 - **Multiple views**: Including Alastair timeline format
-- **Smart time windows**: Monday morning shows Friday's work (not Sunday's nothing)
+- **Smart time windows**: Monday morning shows Friday's work (not Sunday's nothing)$$
 - **Shadow work tracking**: Retroactively adds unplanned work to your backlog
 
 ## Installation
