@@ -78,6 +78,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  padding-top: 80px; // Account for fixed header
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
