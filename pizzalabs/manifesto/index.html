@@ -255,4 +255,96 @@ const statements = {
     `
   }
 };
+
+// State management
+let currentMood = null;
+const moods = ['academic', 'pretentious', 'sincere', 'manifesto'];
+
+// DOM elements
+const container = document.querySelector('.manifesto-container');
+const titleEl = document.getElementById('manifesto-title');
+const contentEl = document.getElementById('manifesto-content');
+const luckyBtn = document.getElementById('lucky-btn');
+const pizzaIcon = luckyBtn.querySelector('.pizza-icon');
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Check URL params for specific mood
+  const urlParams = new URLSearchParams(window.location.search);
+  const requestedMood = urlParams.get('mood');
+
+  if (requestedMood && statements[requestedMood]) {
+    setMood(requestedMood);
+  } else {
+    // Load random mood on first visit
+    setMood(getRandomMood());
+  }
+
+  // Set up event listeners
+  setupEventListeners();
+});
+
+// Get random mood
+function getRandomMood() {
+  return moods[Math.floor(Math.random() * moods.length)];
+}
+
+// Set active mood
+function setMood(mood) {
+  if (!statements[mood]) return;
+
+  // Add transition class
+  contentEl.classList.add('switching');
+
+  setTimeout(() => {
+    // Update content
+    currentMood = mood;
+    titleEl.textContent = statements[mood].title;
+    contentEl.innerHTML = statements[mood].content;
+
+    // Update container class for styling
+    container.className = 'manifesto-container mood-' + mood;
+
+    // Update active button
+    updateActiveButton(mood);
+
+    // Update URL without reload
+    const url = new URL(window.location);
+    url.searchParams.set('mood', mood);
+    window.history.replaceState({}, '', url);
+
+    // Remove transition class
+    contentEl.classList.remove('switching');
+  }, 300);
+}
+
+// Update active button state
+function updateActiveButton(mood) {
+  document.querySelectorAll('.mood-btn').forEach(btn => {
+    if (btn.dataset.mood === mood) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+// Setup event listeners
+function setupEventListeners() {
+  // Lucky button
+  luckyBtn.addEventListener('click', () => {
+    pizzaIcon.classList.add('spinning');
+    setTimeout(() => {
+      pizzaIcon.classList.remove('spinning');
+      setMood(getRandomMood());
+    }, 500);
+  });
+
+  // Mood buttons
+  document.querySelectorAll('.mood-btn[data-mood]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setMood(btn.dataset.mood);
+    });
+  });
+}
 </script>
