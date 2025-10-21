@@ -24,7 +24,148 @@ title: Pizza Labs Manifesto
 </div>
 
 <style>
-  /* Inline styles will be added in next task */
+/* Base styles */
+.manifesto-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  min-height: 70vh;
+}
+
+.manifesto-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.manifesto-title {
+  font-size: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.manifesto-content {
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.manifesto-content.switching {
+  opacity: 0;
+}
+
+/* Mood-specific typography */
+.mood-academic .manifesto-content {
+  font-family: Georgia, 'Times New Roman', serif;
+  text-align: justify;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.mood-pretentious .manifesto-content {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #34495e;
+}
+
+.mood-pretentious .manifesto-content em {
+  font-style: italic;
+  color: #8e44ad;
+}
+
+.mood-sincere .manifesto-content {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.mood-manifesto .manifesto-content {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  color: #000;
+}
+
+.mood-manifesto .manifesto-content strong {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Mood selector */
+.mood-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 2px solid #e0e0e0;
+}
+
+.mood-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #333;
+  background: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.mood-btn:hover {
+  background: #f8f8f8;
+  transform: translateY(-2px);
+}
+
+.mood-btn.active {
+  background: #333;
+  color: white;
+}
+
+.mood-btn-lucky {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.mood-btn-lucky:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.pizza-icon {
+  display: inline-block;
+  animation: none;
+}
+
+.pizza-icon.spinning {
+  animation: pizzaSpin 0.5s ease-in-out;
+}
+
+@keyframes pizzaSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .manifesto-container {
+    padding: 1rem;
+  }
+
+  .manifesto-title {
+    font-size: 2rem;
+  }
+
+  .mood-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mood-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
 </style>
 
 <script>
