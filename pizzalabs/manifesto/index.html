@@ -269,15 +269,21 @@ const pizzaIcon = luckyBtn.querySelector('.pizza-icon');
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-  // Check URL params for specific mood
+  // Check URL params first
   const urlParams = new URLSearchParams(window.location.search);
   const requestedMood = urlParams.get('mood');
 
   if (requestedMood && statements[requestedMood]) {
     setMood(requestedMood);
   } else {
-    // Load random mood on first visit
-    setMood(getRandomMood());
+    // Check localStorage for last viewed mood
+    const savedMood = localStorage.getItem('pizzaLabsMood');
+    if (savedMood && statements[savedMood]) {
+      setMood(savedMood);
+    } else {
+      // Load random mood on first visit
+      setMood(getRandomMood());
+    }
   }
 
   // Set up event listeners
@@ -312,6 +318,9 @@ function setMood(mood) {
     const url = new URL(window.location);
     url.searchParams.set('mood', mood);
     window.history.replaceState({}, '', url);
+
+    // Save to localStorage
+    localStorage.setItem('pizzaLabsMood', mood);
 
     // Remove transition class
     contentEl.classList.remove('switching');
