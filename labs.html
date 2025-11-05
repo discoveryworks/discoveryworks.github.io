@@ -1,0 +1,71 @@
+---
+layout: default
+title: Labs
+permalink: /labs/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section__content">
+      <h1 class="section__title">All Labs</h1>
+      <p class="section__text">Exploring how humans and computers work together</p>
+
+      <ul class="lab-list">
+        {% for lab_key in site.data.labs %}
+          {% assign lab_data = lab_key[1] %}
+          {% assign lab_projects = site.projects | where: 'lab', lab_key[0] %}
+          {% if lab_projects.size > 0 %}
+            <li>
+              <div class="lab-card">
+                <h2 class="lab-card-title">{{ lab_data.title }}</h2>
+                <p class="lab-card-description">{{ lab_data.description | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+                <p class="lab-card-count">{{ lab_projects.size }} {% if lab_projects.size == 1 %}project{% else %}projects{% endif %}</p>
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+.lab-card {
+  padding: var(--space-6);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-card:hover {
+  border-color: var(--color-palette-yellow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.lab-card-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+}
+
+.lab-card-description {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  flex-grow: 1;
+}
+
+.lab-card-count {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+</style>
