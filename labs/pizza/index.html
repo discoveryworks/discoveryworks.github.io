@@ -8,7 +8,10 @@ permalink: /labs/pizza/
   <div class="container">
     <div class="section__content">
       <h1 class="section__title">{{ page.title }}</h1>
-      <p class="section__text">{{ site.data.labs.pizza.description | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+
+      <p class="section__text">Pizza Labs operates at the intersection of ludological tradition and contemporary symbolic systems. Or maybe we just like putting pizza in old games.</p>
+
+      <p class="section__text">Choose your preferred level of pretension: <a href="/labs/pizza/manifesto/">Read our manifesto</a></p>
 
       <ul class="lab-list">
         {% assign lab_projects = site.projects | where: 'lab', 'pizza' | sort: 'order' %}
