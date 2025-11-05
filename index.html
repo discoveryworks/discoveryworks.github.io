@@ -57,7 +57,7 @@ description: Straightforward, honest, financial advice. We are a financial advis
           <h2 class="section__title">{{ lab_data.title }}</h2>
           
           {% if lab_data.description %}
-            <p class="section__text">{{ lab_data.description }}</p>
+            <p class="section__text">{{ lab_data.description | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
           {% endif %}
           
           <ul class="lab-list">
