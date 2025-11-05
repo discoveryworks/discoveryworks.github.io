@@ -53,43 +53,147 @@ title: Pizza Labs Manifesto
   opacity: 0;
 }
 
-/* Mood-specific typography */
+.manifesto-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* ACADEMIC: Royal Society circa 1502 */
+.mood-academic {
+  background: #fdfcf9;
+}
+
+.mood-academic .manifesto-header {
+  border-bottom: 3px double #8b7355;
+  padding-bottom: 2rem;
+}
+
+.mood-academic .manifesto-title {
+  font-family: 'Garamond', 'Baskerville', 'Palatino', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #3d2817;
+  letter-spacing: 0.05em;
+}
+
 .mood-academic .manifesto-content {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: 'Garamond', 'Baskerville', 'Palatino', serif;
   text-align: justify;
-  font-size: 1.1rem;
-  color: #2c3e50;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #3d2817;
+  hyphens: auto;
+}
+
+.mood-academic .manifesto-content p:first-letter {
+  font-size: 3.5em;
+  line-height: 0.8;
+  float: left;
+  padding: 0.1em 0.1em 0 0;
+  font-weight: bold;
+}
+
+/* PRETENTIOUS: Over the top */
+.mood-pretentious {
+  background: linear-gradient(to bottom, #fefefe 0%, #f8f6f4 100%);
+}
+
+.mood-pretentious .manifesto-title {
+  font-family: 'Didot', 'Bodoni MT', 'Playfair Display', Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #1a1a1a;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
 .mood-pretentious .manifesto-content {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Garamond', 'Baskerville', Georgia, serif;
   font-size: 1.2rem;
-  line-height: 1.8;
-  color: #34495e;
+  line-height: 1.9;
+  color: #2c2c2c;
+  letter-spacing: 0.01em;
 }
 
 .mood-pretentious .manifesto-content em {
   font-style: italic;
-  color: #8e44ad;
+  color: #6b4c9a;
+  font-weight: 500;
+}
+
+.mood-pretentious .manifesto-content p {
+  text-indent: 2em;
+  margin-bottom: 1.8rem;
+}
+
+.mood-pretentious .manifesto-content p:first-child {
+  text-indent: 0;
+}
+
+/* SINCERE: DW house style */
+.mood-sincere .manifesto-title {
+  font-family: var(--font-family-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text, #1a1a1a);
 }
 
 .mood-sincere .manifesto-content {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
-  font-size: 1.1rem;
+  font-family: var(--font-family-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: 1.125rem;
   line-height: 1.7;
-  color: #333;
+  color: var(--color-text, #333);
+}
+
+.mood-sincere .manifesto-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* MANIFESTO: Luther/Marx revolutionary broadside */
+.mood-manifesto {
+  background: #fffef8;
+  border: 4px solid #000;
+}
+
+.mood-manifesto .manifesto-header {
+  background: #000;
+  color: #fff;
+  padding: 2rem;
+  margin: -2rem -2rem 2rem -2rem;
+}
+
+.mood-manifesto .manifesto-title {
+  font-family: 'Franklin Gothic', 'Arial Black', 'Impact', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .mood-manifesto .manifesto-content {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 600;
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
   color: #000;
+}
+
+.mood-manifesto .manifesto-content p {
+  margin-bottom: 1.25rem;
 }
 
 .mood-manifesto .manifesto-content strong {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-size: 1.05em;
+}
+
+.mood-manifesto .manifesto-content p:has(strong:only-child) {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem 0;
 }
 
 /* Mood selector */
