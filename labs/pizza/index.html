@@ -1,0 +1,23 @@
+---
+layout: default
+title: "Pizza Labs"
+permalink: /labs/pizza/
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section__content">
+      <h1 class="section__title">{{ page.title }}</h1>
+      <p class="section__text">{{ site.data.labs.pizza.description | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+
+      <ul class="lab-list">
+        {% assign lab_projects = site.projects | where: 'lab', 'pizza' | sort: 'order' %}
+        {% for project in lab_projects %}
+          <li>
+            {% include project-card.html project=project show_meta=false show_install=true %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
