@@ -1,6 +1,9 @@
 # Jekyll generated files
 _site/
 
+# Git worktrees
+.worktrees/
+
 # OS generated files
 .DS_Store
 .DS_Store?
