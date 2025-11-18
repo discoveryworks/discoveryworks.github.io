@@ -8,7 +8,7 @@ permalink: /privacy/
 
 **Last updated: {{ site.time | date: "%B %d, %Y" }}**
 
-This Privacy Policy describes how Discovery Works ("we," "our," or "us") collects, uses, and shares your personal information when you use Pizza Labs mobile applications, including Pizza Pong and Pizzaroids (the "Apps").
+This Privacy Policy describes how Discovery Works ("we," "our," or "us") collects, uses, and shares your personal information when you use Pizza Labs applications, including Pizza Pong, Pizzaroids, and Pizza Ping (the "Apps").
 
 ## Information We Collect
 
@@ -68,4 +68,4 @@ If you have questions about this Privacy Policy, please contact us at:
 
 ---
 
-*This privacy policy applies to Pizza Labs mobile applications (Pizza Pong and Pizzaroids) developed by Discovery Works.*
+*This privacy policy applies to Pizza Labs applications (Pizza Pong, Pizzaroids, and Pizza Ping) developed by Discovery Works.*
