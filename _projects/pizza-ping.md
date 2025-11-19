@@ -3,7 +3,7 @@ layout: project
 title: "🍕Pizza Ping"
 description: "Network latency monitor. (But with more pizza.)"
 lab: "pizza"
-repo: "https://github.com/discoveryworks/pizzaping"
+repo: "https://github.com/discoveryworks/pizza-ping"
 order: 6
 status: "active"
 ---
