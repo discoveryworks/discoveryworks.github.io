@@ -5,6 +5,7 @@ description: "Network latency monitor. (But with more pizza.)"
 lab: "pizza"
 repo: "https://github.com/discoveryworks/pizza-ping"
 download_url: "https://github.com/discoveryworks/pizza-ping/releases/download/v1.0.0/PizzaPing-v1.0.0.zip"
+installation_instructions: "brew tap discoveryworks/pizzalabs && brew install --cask pizza-ping"
 order: 6
 status: "active"
 ---
