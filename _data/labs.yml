@@ -13,6 +13,11 @@ neurospicy:
   description: "Tools for people like us."
   intro: ""
 
+tuxlux:
+  title: "TuxLux"
+  description: "The Silver Tsunami is coming."
+  intro: ""
+
 unfussy:
   title: "Unfussy Design"
   description: "Function over formalisms."

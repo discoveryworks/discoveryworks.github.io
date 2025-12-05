@@ -10,9 +10,21 @@ order: 6
 status: "active"
 ---
 
-Network latency monitor. (But with more pizza.)
+Network latency monitor available on multiple platforms. (But with more pizza.)
 
+## Pizza Ping for Mac
 A clean, ad-free macOS menu bar app that continuously monitors your network connection by pinging public DNS servers. Shows current latency with a pizza emoji and colored status indicator (🍕🟢/🟡/🔴/🚫).
+
+Install via Homebrew, or download the Lite version (no wifi name) on the Mac App Store.
+
+## Pizza Ping iOS (with Widget and Lock Screen widget)
+Use this iOS app to quickly check your network connection by pinging public DNS servers. Includes Widget and Lock Screen widget for continuous monitoring.
+
+## Pizza Ping WatchOS (with Complication)
+Use this Apple Watch app to quickly check your network connection by pinging public DNS servers. Includes a Complication for continuous monitoring.
+ WatchOS (with Complication)
+
+---
 
 ## Installation
 

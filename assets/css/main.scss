@@ -2,6 +2,7 @@
 ---
 
 // Reset and base styles
+
 * {
   margin: 0;
   padding: 0;
@@ -186,8 +187,7 @@ main {
       var(--color-palette-blue) 30%,
       var(--color-palette-yellow) 60%,
       var(--color-palette-green) 85%,
-      var(--hero-gradient-start, var(--color-palette-pink)) 100%
-    ),
+      var(--hero-gradient-start, var(--color-palette-pink)) 100%),
     radial-gradient(circle at 70% 30%, var(--color-palette-yellow) 0%, transparent 70%),
     radial-gradient(circle at 30% 70%, var(--color-palette-green) 0%, transparent 70%);
   background-size: 1200% 1200%;
@@ -210,7 +210,7 @@ main {
   right: 0;
   bottom: 0;
   background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -407,7 +407,7 @@ main {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: color 0.2s ease;
-  
+
   &:hover {
     color: white;
   }
@@ -501,12 +501,23 @@ main {
 }
 
 @keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.container, .hero__content, .hero__copy, .hero__brand {
+.container,
+.hero__content,
+.hero__copy,
+.hero__brand {
   text-align: left !important;
   align-items: flex-start !important;
   margin-left: 0 !important;
@@ -529,7 +540,7 @@ main {
   background: var(--color-palette-yellow);
   border-color: var(--color-palette-yellow);
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px 0 rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
 }
 
 .lab-list .project-card-link:hover .project-title {
@@ -576,40 +587,75 @@ main {
 }
 
 /* GitHub icon styling */
-.project-github-link {
+/* Project links container */
+.project-links {
   position: absolute;
   bottom: var(--space-4);
   right: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+  z-index: 10;
+}
+
+/* Generic project link styling */
+.project-link {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
-  min-width: 44px; /* iOS minimum touch target */
-  min-height: 44px; /* iOS minimum touch target */
-  padding: 12px;
+  min-width: 44px;
+  /* iOS minimum touch target */
+  min-height: 44px;
+  /* iOS minimum touch target */
+  padding: 10px;
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   transition: all 0.2s ease;
-  z-index: 10;
 }
 
-.project-github-link svg {
+.project-link svg {
   width: 20px;
   height: 20px;
   color: var(--color-text-light);
 }
 
-.project-github-link:hover {
+.project-link:hover {
   background: var(--color-background-light);
   border-color: var(--color-text-light);
   transform: translateY(-2px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.project-github-link:hover svg {
+.project-link:hover svg {
   color: var(--color-dark);
+}
+
+/* App Store specific styling */
+.project-app-store-link {
+  width: auto;
+  padding: 0 20px;
+  background: var(--color-dark);
+  color: white;
+  gap: var(--space-2);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.project-app-store-link svg {
+  color: white;
+}
+
+.project-app-store-link:hover {
+  background: black;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-app-store-link:hover svg {
+  color: white;
 }
 
 /* Ensure lab-list items work with new structure */
@@ -640,13 +686,11 @@ main {
   left: -100%;
   width: 200%;
   height: 100%;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 8px,
-    rgba(100, 116, 139, 0.3) 8px,
-    rgba(100, 116, 139, 0.3) 16px
-  );
+  background: repeating-linear-gradient(45deg,
+      transparent,
+      transparent 8px,
+      rgba(100, 116, 139, 0.3) 8px,
+      rgba(100, 116, 139, 0.3) 16px);
   pointer-events: none;
   z-index: 1;
 }
@@ -680,13 +724,11 @@ main {
   left: -100%;
   width: 200%;
   height: 100%;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 6px,
-    rgba(108, 117, 125, 0.2) 6px,
-    rgba(108, 117, 125, 0.2) 12px
-  );
+  background: repeating-linear-gradient(-45deg,
+      transparent,
+      transparent 6px,
+      rgba(108, 117, 125, 0.2) 6px,
+      rgba(108, 117, 125, 0.2) 12px);
   pointer-events: none;
   z-index: 1;
 }
@@ -729,13 +771,15 @@ main {
   .section__title {
     font-size: 2rem;
   }
+
   .lab-list a {
     font-size: 1.25rem;
     padding: var(--space-2) var(--space-2);
   }
 }
 
-h2, .section__title {
+h2,
+.section__title {
   font-family: var(--font-mono);
   font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 400;
@@ -746,7 +790,8 @@ h2, .section__title {
 }
 
 
-.hero__brand, .hero__title {
+.hero__brand,
+.hero__title {
   font-family: var(--font-mono);
 }
 
@@ -754,12 +799,26 @@ body {
   font-family: var(--font-sans);
 }
 
-.hero--pink { --hero-gradient-start: var(--color-palette-pink); }
-.hero--blue { --hero-gradient-start: var(--color-palette-blue); }
-.hero--yellow { --hero-gradient-start: var(--color-palette-yellow); }
-.hero--green { --hero-gradient-start: var(--color-palette-green); }
+.hero--pink {
+  --hero-gradient-start: var(--color-palette-pink);
+}
 
-h2.question, .question, h2.bad-answer, .bad-answer {
+.hero--blue {
+  --hero-gradient-start: var(--color-palette-blue);
+}
+
+.hero--yellow {
+  --hero-gradient-start: var(--color-palette-yellow);
+}
+
+.hero--green {
+  --hero-gradient-start: var(--color-palette-green);
+}
+
+h2.question,
+.question,
+h2.bad-answer,
+.bad-answer {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.2rem);
   font-weight: 300;
@@ -768,13 +827,15 @@ h2.question, .question, h2.bad-answer, .bad-answer {
   margin-top: 0;
 }
 
-h2.question, .question {
-  color: rgba(255,255,255,0.85);
+h2.question,
+.question {
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 0.1em;
 }
 
-h2.bad-answer, .bad-answer {
-  color: rgba(0,0,0,0.7);
+h2.bad-answer,
+.bad-answer {
+  color: rgba(0, 0, 0, 0.7);
   margin-bottom: 2.2rem;
 }
 
@@ -783,44 +844,50 @@ h2.bad-answer, .bad-answer {
   font-size: var(--font-size-lg);
   line-height: 1.7;
   color: var(--color-text);
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-mono);
     font-weight: 700;
     margin-top: var(--space-8);
     margin-bottom: var(--space-4);
     color: var(--color-dark);
   }
-  
+
   h1 {
     font-size: var(--font-size-3xl);
   }
-  
+
   h2 {
     font-size: var(--font-size-2xl);
   }
-  
+
   h3 {
     font-size: var(--font-size-xl);
   }
-  
+
   p {
     margin-bottom: var(--space-6);
-    
+
     &:last-child {
       margin-bottom: 0;
     }
   }
-  
-  ul, ol {
+
+  ul,
+  ol {
     margin-bottom: var(--space-6);
     padding-left: var(--space-6);
   }
-  
+
   li {
     margin-bottom: var(--space-2);
   }
-  
+
   strong {
     font-weight: 700;
     color: var(--color-dark);
@@ -833,49 +900,55 @@ h2.bad-answer, .bad-answer {
   line-height: 1.7;
   color: var(--color-text);
   margin-bottom: var(--space-8);
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-mono);
     font-weight: 700;
     margin-top: var(--space-8);
     margin-bottom: var(--space-4);
     color: var(--color-dark);
   }
-  
+
   h1 {
     font-size: var(--font-size-3xl);
   }
-  
+
   h2 {
     font-size: var(--font-size-2xl);
   }
-  
+
   h3 {
     font-size: var(--font-size-xl);
   }
-  
+
   p {
     margin-bottom: var(--space-6);
-    
+
     &:last-child {
       margin-bottom: 0;
     }
   }
-  
-  ul, ol {
+
+  ul,
+  ol {
     margin-bottom: var(--space-6);
     padding-left: var(--space-6);
   }
-  
+
   li {
     margin-bottom: var(--space-2);
   }
-  
+
   strong {
     font-weight: 700;
     color: var(--color-dark);
   }
-  
+
   img {
     width: 100%;
     height: auto;
@@ -887,7 +960,7 @@ h2.bad-answer, .bad-answer {
     min-height: 600px;
     object-fit: contain;
   }
-  
+
   img[src*="type_specimen_full"] {
     min-height: 800px;
     width: 100%;
@@ -903,7 +976,7 @@ h2.bad-answer, .bad-answer {
   margin-top: var(--space-8);
   padding-top: var(--space-8);
   border-top: 1px solid var(--color-border);
-  
+
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: flex-start;
@@ -918,17 +991,17 @@ h2.bad-answer, .bad-answer {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-radius: var(--border-radius);
-  
+
   &--active {
     background: var(--color-palette-green);
     color: var(--color-dark);
   }
-  
+
   &--development {
     background: var(--color-palette-yellow);
     color: var(--color-dark);
   }
-  
+
   &--stealth {
     background: var(--color-text-light);
     color: var(--color-background);
@@ -938,7 +1011,7 @@ h2.bad-answer, .bad-answer {
 .project-links {
   display: flex;
   gap: var(--space-4);
-  
+
   @media (max-width: 640px) {
     flex-wrap: wrap;
   }
@@ -952,17 +1025,17 @@ h2.bad-answer, .bad-answer {
   text-decoration: none;
   border-radius: var(--border-radius);
   transition: all 0.2s ease;
-  
+
   &--primary {
     background: var(--color-dark);
     color: var(--color-background);
-    
+
     &:hover {
       background: var(--color-primary);
       transform: translateY(-1px);
     }
   }
-  
+
   &--secondary {
     background: var(--color-background);
     color: var(--color-text);
@@ -1025,7 +1098,7 @@ h2.bad-answer, .bad-answer {
   padding: var(--space-8);
   text-align: center;
   transition: all 0.2s ease;
-  
+
   &:hover {
     background: var(--color-background-light);
     border-color: var(--color-text-light);
@@ -1069,11 +1142,11 @@ h2.bad-answer, .bad-answer {
   transition: all 0.2s ease;
   cursor: pointer;
   border: none;
-  
+
   &--primary {
     background: var(--color-dark);
     color: var(--color-background);
-    
+
     &:hover {
       background: var(--color-primary);
       transform: translateY(-1px);
@@ -1131,7 +1204,7 @@ h2.bad-answer, .bad-answer {
   background: var(--color-dark);
   color: var(--color-background);
   margin-bottom: var(--space-8);
-  
+
   &:hover {
     background: var(--color-primary);
     transform: translateY(-1px);
@@ -1144,7 +1217,7 @@ h2.bad-answer, .bad-answer {
     grid-template-columns: 1fr;
     gap: var(--space-6);
   }
-  
+
   .brand-kit__item {
     padding: var(--space-6);
   }
