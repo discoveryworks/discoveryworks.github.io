@@ -5,7 +5,9 @@ Assets for press, marketing, and partner use.
 ## Icons (1024x1024)
 - `icons/pizzaroids_1024.png` - Pizzaroids app icon
 - `icons/pizza_ping_1024.png` - Pizza Ping app icon
-- More coming soon (Pizza Pong, Tic Tac Pizza, Ms. Pizza-Man)
+- `icons/pizza_pong_1024.png` - Pizza Pong app icon
+- `icons/tic_tac_pizza_1024.png` - Tic Tac Pizza app icon
+- `icons/ms_pizza_man_1024.png` - Ms. Pizza-Man app icon
 
 ## Screenshots
 - `screenshots/tic_tac_pizza_*.png` - Tic Tac Pizza gameplay
