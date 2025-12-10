@@ -635,16 +635,24 @@ main {
 /* App Store specific styling */
 .project-app-store-link {
   width: auto;
-  padding: 0 20px;
+  padding: 0 var(--space-4);
   background: var(--color-dark);
   color: white;
   gap: var(--space-2);
   font-weight: 600;
   font-size: var(--font-size-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-app-store-link svg {
   color: white;
+  flex-shrink: 0;
+}
+
+.project-app-store-link span {
+  line-height: 1;
 }
 
 .project-app-store-link:hover {
