@@ -619,8 +619,11 @@ main {
 .project-link svg {
   width: 20px;
   height: 20px;
-  fill: var(--color-text-light);
   flex-shrink: 0;
+}
+
+.project-link svg path {
+  fill: var(--color-text-light);
 }
 
 .project-link:hover {
@@ -630,13 +633,8 @@ main {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.project-link:hover svg {
+.project-link:hover svg path {
   fill: var(--color-dark);
-}
-
-/* GitHub link specific styling */
-.project-github-link svg {
-  fill: var(--color-text-light);
 }
 
 /* App Store specific styling */
@@ -654,8 +652,11 @@ main {
 }
 
 .project-app-store-link svg {
-  color: white;
   flex-shrink: 0;
+}
+
+.project-app-store-link svg path {
+  fill: white;
 }
 
 .project-app-store-link span {
@@ -669,8 +670,8 @@ main {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.project-app-store-link:hover svg {
-  color: white;
+.project-app-store-link:hover svg path {
+  fill: white;
 }
 
 /* Ensure lab-list items work with new structure */
