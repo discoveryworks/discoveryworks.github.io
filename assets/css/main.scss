@@ -586,6 +586,29 @@ main {
   transition: all 0.2s ease;
 }
 
+.project-card-content {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.project-icon {
+  flex-shrink: 0;
+}
+
+.project-icon img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.project-info {
+  flex: 1;
+  min-width: 0;
+}
+
 /* Project links container */
 .project-links {
   position: absolute;
@@ -878,6 +901,39 @@ h2.bad-answer,
     font-weight: 700;
     color: var(--color-dark);
   }
+}
+
+// Project page header
+.project-header {
+  display: flex;
+  gap: var(--space-6);
+  align-items: center;
+  margin-bottom: var(--space-8);
+}
+
+.project-header__icon {
+  flex-shrink: 0;
+}
+
+.project-header__icon img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.project-header__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-header__info .section__title {
+  margin-bottom: var(--space-4);
+}
+
+.project-header__info .section__text {
+  margin-bottom: 0;
 }
 
 // Project page styling

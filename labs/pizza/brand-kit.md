@@ -7,32 +7,42 @@ permalink: /labs/pizza/brand-kit/
 
 ## App Icons
 
-All icons are 1024x1024 PNG format, optimized for app stores and press use.
+All icons available in multiple sizes (120px, 180px, 1024px) for different uses.
 
 ### Pizzaroids
-![Pizzaroids App Icon](/labs/pizza/brand_kit/icons/pizzaroids_1024.png)
+![Pizzaroids App Icon](/assets/projects/pizzaroids/icon-120.png)
 
-[Download Icon](/labs/pizza/brand_kit/icons/pizzaroids_1024.png){: download class="btn btn--primary"}
+[Download 120px](/assets/projects/pizzaroids/icon-120.png){: download class="btn btn--primary"}
+[Download 180px](/assets/projects/pizzaroids/icon-180.png){: download class="btn btn--primary"}
+[Download 1024px](/assets/projects/pizzaroids/icon-1024.png){: download class="btn btn--primary"}
 
 ### Pizza Ping
-![Pizza Ping App Icon](/labs/pizza/brand_kit/icons/pizza_ping_1024.png)
+![Pizza Ping App Icon](/assets/projects/pizza-ping/icon-120.png)
 
-[Download Icon](/labs/pizza/brand_kit/icons/pizza_ping_1024.png){: download class="btn btn--primary"}
+[Download 120px](/assets/projects/pizza-ping/icon-120.png){: download class="btn btn--primary"}
+[Download 180px](/assets/projects/pizza-ping/icon-180.png){: download class="btn btn--primary"}
+[Download 1024px](/assets/projects/pizza-ping/icon-1024.png){: download class="btn btn--primary"}
 
 ### Pizza Pong
-![Pizza Pong App Icon](/labs/pizza/brand_kit/icons/pizza_pong_1024.png)
+![Pizza Pong App Icon](/assets/projects/pizza-pong/icon-120.png)
 
-[Download Icon](/labs/pizza/brand_kit/icons/pizza_pong_1024.png){: download class="btn btn--primary"}
+[Download 120px](/assets/projects/pizza-pong/icon-120.png){: download class="btn btn--primary"}
+[Download 180px](/assets/projects/pizza-pong/icon-180.png){: download class="btn btn--primary"}
+[Download 1024px](/assets/projects/pizza-pong/icon-1024.png){: download class="btn btn--primary"}
 
 ### Tic Tac Pizza
-![Tic Tac Pizza App Icon](/labs/pizza/brand_kit/icons/tic_tac_pizza_1024.png)
+![Tic Tac Pizza App Icon](/assets/projects/tic-tac-pizza/icon-120.png)
 
-[Download Icon](/labs/pizza/brand_kit/icons/tic_tac_pizza_1024.png){: download class="btn btn--primary"}
+[Download 120px](/assets/projects/tic-tac-pizza/icon-120.png){: download class="btn btn--primary"}
+[Download 180px](/assets/projects/tic-tac-pizza/icon-180.png){: download class="btn btn--primary"}
+[Download 1024px](/assets/projects/tic-tac-pizza/icon-1024.png){: download class="btn btn--primary"}
 
 ### Ms. Pizza-Man
-![Ms. Pizza-Man App Icon](/labs/pizza/brand_kit/icons/ms_pizza_man_1024.png)
+![Ms. Pizza-Man App Icon](/assets/projects/ms-pizza-man/icon-120.png)
 
-[Download Icon](/labs/pizza/brand_kit/icons/ms_pizza_man_1024.png){: download class="btn btn--primary"}
+[Download 120px](/assets/projects/ms-pizza-man/icon-120.png){: download class="btn btn--primary"}
+[Download 180px](/assets/projects/ms-pizza-man/icon-180.png){: download class="btn btn--primary"}
+[Download 1024px](/assets/projects/ms-pizza-man/icon-1024.png){: download class="btn btn--primary"}
 
 ## Screenshots
 

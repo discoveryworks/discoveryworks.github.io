@@ -1,7 +1,9 @@
 ---
 layout: project
-title: "🍕Tic Tac Pizza"
+title: "Tic Tac Pizza"
 description: "Ultimate Tic Tac Toe. (But with more pizza.)"
+icon: "/assets/projects/tic-tac-pizza/icon-120.png"
+icon_2x: "/assets/projects/tic-tac-pizza/icon-180.png"
 lab: "pizza"
 repo: "https://github.com/discoveryworks/ios-tic_tac_pizza"
 app_store_url: "https://apps.apple.com/app/tic-tac-pizza/id6755246202"

@@ -1,7 +1,9 @@
 ---
 layout: project
-title: "🍕Pizza Ping"
+title: "Pizza Ping"
 description: "Network latency monitor. (But with more pizza.)"
+icon: "/assets/projects/pizza-ping/icon-120.png"
+icon_2x: "/assets/projects/pizza-ping/icon-180.png"
 lab: "pizza"
 repo: "https://github.com/discoveryworks/pizza-ping"
 download_url: "https://github.com/discoveryworks/pizza-ping/releases/download/v1.0.0/PizzaPing-v1.0.0.zip"

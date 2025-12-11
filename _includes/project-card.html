@@ -9,19 +9,32 @@
 <div class="project-card-wrapper">
   <a href="{{ project.url | relative_url }}"
     class="project-card-link project-status-{{ project.status | default: 'active' }}">
-    {% if include.show_meta %}
-    <div class="project-meta">
-      <span class="project-lab">{{ site.data.labs[project.lab].title | upcase }}</span>
-      <span class="project-status">{{ project.status | default: 'active' | capitalize }}</span>
+    <div class="project-card-content">
+      {% if project.icon %}
+      <div class="project-icon">
+        <img src="{{ project.icon | relative_url }}"
+             srcset="{{ project.icon | relative_url }} 1x, {{ project.icon_2x | relative_url }} 2x"
+             alt="{{ project.title }} icon"
+             width="64"
+             height="64">
+      </div>
+      {% endif %}
+      <div class="project-info">
+        {% if include.show_meta %}
+        <div class="project-meta">
+          <span class="project-lab">{{ site.data.labs[project.lab].title | upcase }}</span>
+          <span class="project-status">{{ project.status | default: 'active' | capitalize }}</span>
+        </div>
+        {% endif %}
+        <div class="project-title">{{ project.title }}</div>
+        <div class="project-description">{{ project.description }}</div>
+        {% if project.installation_instructions and include.show_install %}
+        <div class="project-install">
+          <code>{{ project.installation_instructions }}</code>
+        </div>
+        {% endif %}
+      </div>
     </div>
-    {% endif %}
-    <div class="project-title">{{ project.title }}</div>
-    <div class="project-description">{{ project.description }}</div>
-    {% if project.installation_instructions and include.show_install %}
-    <div class="project-install">
-      <code>{{ project.installation_instructions }}</code>
-    </div>
-    {% endif %}
   </a>
   <div class="project-links">
     {% if project.repo %}

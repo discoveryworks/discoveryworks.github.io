@@ -10,10 +10,23 @@ layout: default
         <h1 class="section__title">Stealth Project: {{ page.title | stealth_hash }}</h1>
         <p class="section__text">█████████ ████████████ ███████</p>
       {% else %}
-      <h1 class="section__title">{{ page.title }}</h1>
-      {% if page.description %}
-      <p class="section__text">{{ page.description }}</p>
-      {% endif %}
+      <div class="project-header">
+        {% if page.icon %}
+        <div class="project-header__icon">
+          <img src="{{ page.icon | relative_url }}"
+               srcset="{{ page.icon | relative_url }} 1x, {{ page.icon_2x | relative_url }} 2x"
+               alt="{{ page.title }} icon"
+               width="80"
+               height="80">
+        </div>
+        {% endif %}
+        <div class="project-header__info">
+          <h1 class="section__title">{{ page.title }}</h1>
+          {% if page.description %}
+          <p class="section__text">{{ page.description }}</p>
+          {% endif %}
+        </div>
+      </div>
       {% endif %}
       {% if page.installation_instructions %}
         <div class="installation-notice">
