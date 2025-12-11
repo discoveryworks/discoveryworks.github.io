@@ -593,22 +593,18 @@ main {
   bottom: var(--space-4);
   right: var(--space-4);
   display: flex;
-  gap: var(--space-2);
+  align-items: center;
+  gap: var(--space-3);
   z-index: 10;
 }
 
-/* Generic project link styling */
-.project-link {
-  display: flex;
+/* GitHub link - simple icon button */
+.project-github-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  /* iOS minimum touch target */
-  min-height: 44px;
-  /* iOS minimum touch target */
-  padding: 10px;
+  width: 36px;
+  height: 36px;
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
@@ -616,62 +612,56 @@ main {
   text-decoration: none;
 }
 
-.project-link svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
+.project-github-link svg {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
-.project-link svg path {
-  fill: var(--color-text-light);
+.project-github-link svg path {
+  fill: var(--color-text);
 }
 
-.project-link:hover {
-  background: var(--color-background-light);
-  border-color: var(--color-text-light);
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.project-link:hover svg path {
-  fill: var(--color-dark);
-}
-
-/* App Store specific styling */
-.project-app-store-link {
-  width: auto;
-  padding: 0 var(--space-4);
+.project-github-link:hover {
   background: var(--color-dark);
-  color: white;
-  gap: var(--space-2);
-  font-weight: 600;
-  font-size: var(--font-size-sm);
+  border-color: var(--color-dark);
+  transform: translateY(-1px);
+}
+
+.project-github-link:hover svg path {
+  fill: white;
+}
+
+/* App Store link - button with icon and text */
+.project-app-store-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  background: var(--color-dark);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .project-app-store-link svg {
-  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  display: block;
 }
 
 .project-app-store-link svg path {
   fill: white;
 }
 
-.project-app-store-link span {
-  line-height: 1;
-}
-
 .project-app-store-link:hover {
   background: black;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.project-app-store-link:hover svg path {
-  fill: white;
+  transform: translateY(-1px);
 }
 
 /* Ensure lab-list items work with new structure */
